@@ -1,0 +1,30 @@
+.callout {
+    margin: 1.75rem 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.callout__content {
+    padding: 1rem 2rem;
+}
+
+.callout_get_code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: dodgerblue;
+
+    i {
+        font-size: 3.5rem;
+        margin-right: 1.5rem;
+    }
+}
+
+@media (min-width: 550px) {
+    .callout-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1.5rem;
+    }
+}

@@ -1,0 +1,5 @@
+# Ignore all materialize components' folder and their contents
+materialize/
+
+# Since it changes every time we don't need to keep an eye on it
+css/main.css.map

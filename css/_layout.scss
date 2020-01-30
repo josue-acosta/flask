@@ -1,0 +1,184 @@
+/* Layout
+-------------------------------------------------- */
+// Basic HTML tag w/o any classes or play a specific role
+// for example typography, legend, cards, etc.
+html {
+    box-sizing: border-box;
+}
+
+.body__container {
+    width: 75%;
+    margin: 0 auto;
+}
+
+
+
+/* Links
+  -------------------------------------------------- */
+a {
+    color: dodgerblue;
+}
+
+
+
+/* Images
+  -------------------------------------------------- */
+img {
+    display: block;
+    width: 100%;
+}
+
+
+
+/* Lists
+  -------------------------------------------------- */
+ul {
+    list-style: circle inside;
+}
+
+ol {
+    list-style: decimal inside;
+}
+
+ol,
+ul {
+    padding-left: 0;
+    margin-top: 0;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+    margin: 1.5rem 0 1.5rem 3rem;
+    font-size: 90%;
+}
+
+li {
+    margin-bottom: 1rem;
+}
+
+
+
+/* Code
+  -------------------------------------------------- */
+code {
+    padding: 2rem;
+    display: block;
+    overflow: scroll;
+    white-space: nowrap;
+    background: #212121;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+    color: white;
+}
+
+pre>code {
+    display: block;
+    padding: 1rem 1.5rem;
+    white-space: pre;
+}
+
+
+
+/* Horizontal Rule
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+hr {
+    margin: 7.5rem 0;
+    border-width: 0;
+    border-top: 1px solid #ddd;
+}
+
+hr:first {
+    margin: 10rem 0 7rem;
+}
+
+
+
+/* Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* Larger than mobile */
+@media (min-width: 415px) {}
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 550px) {}
+
+/* Larger than tablet */
+@media (min-width: 750px) {}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
+
+
+
+
+/* To Do
+-------------------------------------------------- */
+/*
+Getting started
+    - what is it
+    - setting up your html
+        - HTML
+        - charset
+        - mobile first
+        - ie compatable
+
+    - inlcuding css in your package
+        - css
+        - js
+        - html templating
+
+CSS
+    - global css
+    - html elements
+    - extensible classes
+    - grid system
+    - global normalization
+
+    + container
+    + color pallete
+    + grid system
+        - intro
+        - media queries
+        - grid options
+            - mobile and desktop
+            - cards
+            - naming grid areas
+    + typography
+        - heading
+        - subheading
+        - body copy
+        - alignment
+        - transform
+        - block qoutes
+        - list
+            - styled
+            - order
+            - unordered
+        - description
+        - footnotes
+        - dashboard / tabs
+        - code
+        - tables
+            - striped
+            - bordered
+            - hover
+            - condensed
+        - forms
+        - inputs
+        - checkboxes
+            - radio cards
+            - radio box tables
+            - selects
+            - parent / child
+        - messages ( success, fail, warning )
+        - help text
+        - buttons
+        - images
+        - helper class
+            - bg-light-gray
+        - icons
+        - responsive utilities
+*/

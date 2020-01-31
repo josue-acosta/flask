@@ -1,6 +1,6 @@
 # Ignore all materialize components' folder and their contents
 materialize/
-__pychache__/
+__pycache__/
 venv/
 
 # Since it changes every time we don't need to keep an eye on it

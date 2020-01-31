@@ -2,6 +2,7 @@
 materialize/
 __pycache__/
 venv/
+app/__pycache__/
 
 # Since it changes every time we don't need to keep an eye on it
 css/main.css.map

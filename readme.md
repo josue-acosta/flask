@@ -19,5 +19,4 @@ python run.py
 ## Resources
 - http://flask.pocoo.org/
 - https://github.com/lepture/python-livereload
-
-https://stackoverflow.com/questions/56972813/how-to-automate-browser-refresh-when-developing-an-flask-app-with-python
+- https://stackoverflow.com/questions/56972813/how-to-automate-browser-refresh-when-developing-an-flask-app-with-python

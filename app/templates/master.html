@@ -18,18 +18,33 @@
       <nav class="navigation">
         <ul class="navigation__menu-list">
           <li>
-            <a href="{{ url_for('article_01_welcome') }}">
+            <a href="{{ url_for('index') }}">
               <div class="navigation--title">home</div>
             </a>
           </li>
           <li>
-            <a href="{{ url_for('article_01_chapter_01') }}">
-              <div class="navigation--title">get started</div>
+            <a href="{{ url_for('appendix') }}">
+              <div class="navigation--title">appendix</div>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="navigation">
+        <ul class="navigation__menu-list">
+          <li>
+            <a href="{{ url_for('article_01_welcome') }}">
+              <div class="navigation--title">welcome</div>
             </a>
           </li>
           <li>
-            <a href="{{ url_for('article_01_appendix') }}">
-              <div class="navigation--title">appendix</div>
+            <a href="{{ url_for('article_01_chapter_01') }}">
+              <div class="navigation--title">chapter 01</div>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('article_01_resource') }}">
+              <div class="navigation--title">resources</div>
             </a>
           </li>
         </ul>

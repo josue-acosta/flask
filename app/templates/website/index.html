@@ -1,5 +1,10 @@
-{% extends "master.html" %}
+{% extends "templates/website-template.html" %}
 
-{% block content %}
+{% block page %}
+<img src="{{ url_for('static', filename='images/background.jpg')}}" alt="">
 <h1 style="font-family: 'Knewave';">20XX</h1>
+
+<a href="{{ url_for('article_01_welcome') }}">
+    <div class="navigation--title">article 01</div>
+</a>
 {% endblock %}

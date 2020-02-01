@@ -15,10 +15,6 @@
     padding: 1rem;
 }
 
-.navigation__menu-list p {
-    margin-bottom: 0;
-}
-
 .navigation__menu-list li:hover {
     border-radius: 3px;
     background: rgba(0, 0, 0, 0.05);
@@ -45,6 +41,27 @@
     color: #333333;
     text-decoration: none;
 
+}
+
+.nav-bar {
+    display: flex;
+    background-color: black;
+    padding: 1rem;
+
+    .logo {
+        display: block;
+        max-height: 3rem;
+        width: auto;
+        height: auto;
+    }
+
+    a {
+        display: block;
+        margin: 0 auto;
+        color: white;
+        padding: 1rem;
+        text-decoration: none;
+    }
 }
 
 @media (min-width: 415px) {

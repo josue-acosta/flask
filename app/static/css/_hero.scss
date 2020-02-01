@@ -1,0 +1,15 @@
+.hero {
+    width: 100%;
+    height: 100vh;
+    display: block;
+    background: url('../images/background.png') no-repeat;
+    background-size: cover;
+
+    .hero__title {
+        text-align: center;
+        font-size: 65vh;
+        font-family: 'Knewave';
+        color: #ff00ff;
+        align-content: center;
+    }
+}

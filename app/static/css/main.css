@@ -347,6 +347,23 @@ label > .label-body {
   font-weight: normal;
 }
 
+.hero {
+  width: 100%;
+  height: 100vh;
+  display: block;
+  background: url("../images/background.png") no-repeat;
+  background-size: cover;
+}
+
+.hero .hero__title {
+  text-align: center;
+  font-size: 65vh;
+  font-family: 'Knewave';
+  color: #ff00ff;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
 /* Layout
 -------------------------------------------------- */
 html {
@@ -357,6 +374,10 @@ html {
 .body__container {
   width: 75%;
   margin: 0 auto;
+}
+
+.article__container {
+  min-height: 100vh;
 }
 
 /* Links

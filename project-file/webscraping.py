@@ -1,4 +1,4 @@
-import requests
+import json
 from bs4 import BeautifulSoup
 
 artist_list = []
@@ -8,18 +8,33 @@ track_list = zip(title_list, artist_list)
 track_dict = {}
 
 
-with open('project-file/shazam.min.html', 'r') as shazamFile:
+with open('./shazam.html', 'r') as shazamFile:
     shazamSoup = BeautifulSoup(shazamFile, 'html.parser')
 
-    # get div with class title
-    for trackTitle in shazamSoup.find_all('div', attrs={'class':'title'}):
-        title_list.append(trackTitle.find('a').contents[0])
+    # get `details` div
+    details = shazamSoup.find_all('div', attrs={'class':'details'})
 
-    # get div with class artist
-    for trackArtist in shazamSoup.find_all('div', attrs={'class':'artist'}):
-        if trackArtist.find('a') != None:
-            artist_list.append(trackArtist.find('a').contents[0])
+    for i in details:
+        # loop through `details` div and get `artist` div
+        artist = i.find('div', attrs={'class':'artist'})
 
+        # loop through `artist` div and get a.text
+        try:
+            artist_list.append(" ".join(artist.a.text.split()))
+        except AttributeError:
+            artist_list.append(" ")
+
+
+        # loop through `details` div and get `title` div
+        title = i.find('div', attrs={'class':'title'})
+
+        # loop through `title` div and get a.text
+        try:
+            title_list.append(" ".join(title.a.text.split()))
+        except AttributeError:
+            title_list.append(" ")
 
 track_dict.update(list(track_list))
-print(len(track_dict))
+
+with open('./track-list.json', 'w') as trackFile:
+    trackFile.write(json.dumps(track_dict))

@@ -3,14 +3,9 @@
 {% block page %}
 <section class="page-header">
     <h1>Step One</h1>
-    <div class="overline">1/8 of Python Word Counter Series</div>
+    <div class="overline">1/8 of Python Web Scraper</div>
 
-    <p class="objective-paragraph">Welcome! The <strong>objective</strong> of this tutorial is to build a
-        Flask
-        app
-        that calculates
-        word-frequency pairs based on the
-        text from a given URL.</p>
+    <p class="objective-paragraph">Welcome! The <strong>objective</strong> of this step is to set up project folder and write the code that crawls through your Shazam libray.</p>
 </section>
 
 <section class="table-of-contents">
@@ -46,8 +41,7 @@
 <section class="tutorial-body">
     <hr>
     <h2 id="project-setup">1.0.0 Project Setup</h2>
-    <p>We'll start with a basic "Hello World" app on Heroku with staging (or pre-production) and production
-        environments.</p>
+    <p>Let's begin with the project's folder architecture.</p>
 
     <div class="card utl-margin-vert-60">
         <div class="card__title">
@@ -56,17 +50,11 @@
         </div>
 
         <div class="card__content">
-            <p>For the initial setup, you should have some familiarity with the following tools:</p>
+            <p>Even though we'll go through them, you should have some familiarity with the following tools</p>
 
             <ul>
                 <li class="inine-list">Virtualenv -
                     <a class="straight-link" href="https://realpython.com/python-virtual-environments-a-primer">
-                        Learn More
-                        <i class="material-icons md-18">open_in_new</i>
-                    </a>
-                </li>
-                <li class="inine-list">Flask -
-                    <a class="straight-link" href="http://flask.pocoo.org/">
                         Learn More
                         <i class="material-icons md-18">open_in_new</i>
                     </a>
@@ -77,20 +65,14 @@
                         <i class="material-icons md-18">open_in_new</i>
                     </a>
                 </li>
-                <li class="inine-list">Heroku (basics) -
-                    <a class="straight-link" href="https://devcenter.heroku.com/articles/getting-started-with-python">
-                        Learn More
-                        <i class="material-icons md-18">open_in_new</i>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
 
     <div class="micro-step">
         <strong>1.0.1</strong>
-        <p>First things first, let's get a working directory set up:</p>
-        <code>$ mkdir flask-by-example && cd flask-by-example</code>
+        <p>Set up your working directory</p>
+        <code>$ mkdir playlist-webscraper && cd playlist-webscraper</code>
     </div>
 
     <div class="micro-step">
@@ -101,10 +83,11 @@
 
     <div class="micro-step">
         <strong>1.0.3</strong>
-        <p>Set up a virtual environment to use for our application:</p>
+        <p>Set up a virtual environment to use for the application</p>
         <code>$ pyvenv-3.5 env<br/>$ source env/bin/activate</code>
     </div>
 
+    <!-- insert img/illustration here -->
     <p>You should now see you (env) to the left of the prompt in the terminal, indicating that you are now
         working in a virtual environment</p>
 
@@ -112,24 +95,29 @@
         <li>
             <div class="collapsible-header">
                 <i class="material-icons md-24">keyboard_arrow_down</i>
-                <div class="collapsible-title">More virtualenv Commands</div>
+                <div class="collapsible-title">virtualenv Commands</div>
             </div>
             <div class="collapsible-body">
-                <p>In order to leave your virtual environment, just run deactivate, and then run source
-                    env/bin/activate
-                    when you are ready to work on your project again.</p>
+                <div class="micro-step">
+                    <p>Turn venv off</p>
+                    <code>$ deactivate</code>
+                </div>
+                <div class="micro-step">
+                    <p>Turn venv on</p>
+                    <code>$ source venv/bin/activate</code>
+                </div>
             </div>
         </li>
     </ul>
 
     <div class="micro-step">
         <strong>1.0.4</strong>
-        <p>Next we're going to get our basic structure for our app set up. Add the following files to your
-            "flask-by-example" folder:</p>
+        <p>Set up the basic structure for the app. Add the following files to your
+            playlist-webscraper folder</p>
         <code>$ touch app.py .gitignore README.md requirements.txt</code>
     </div>
 
-    <p>This will give you the following structure:</p>
+    <p>This will give you the following structure</p>
     <code>
 ├── .gitignore<br/>
 ├── app.py<br/>
@@ -143,46 +131,42 @@
             <div class="card__title--main">Quick Break</div>
         </div>
         <div class="card__content">
-            <p>Be sure to update the .gitignore file from the repo.</p>
+            <p>Be sure to update the .gitignore file from the repo</p>
         </div>
     </div>
 
-
-
     <div class="micro-step">
         <strong>1.0.5</strong>
-        <p>Next install Flask:</p>
-        <code>$ pip install Flask==0.10.1</code>
+        <p>Next install </p>
+        <code>$ pip3 install beautifulsoup4</code>
     </div>
 
     <div class="micro-step">
         <strong>1.0.6</strong>
-        <p>Add the installed libraries to our requirements.txt file:</p>
+        <p>Add the installed libraries to our requirements.txt file</p>
         <code>$ pip freeze > requirements.txt</code>
     </div>
 
-    <div class="micro-step">
-        <strong>1.0.7</strong>
-        <p>Open up app.py in your favorite editor and add the following code:</p>
-        <code>
-from flask import Flask<br/>
-app = Flask(__name__)<br/><br/>
+    <p>With our project folder set up with the basics let's start codeing!!!</p>
 
-@app.route('/')<br/>
-def hello():<br/>
-&#8195;return "Hello World!"<br/><br/>
+    <hr />
 
-if __name__ == '__main__':<br/>
-&#8195;app.run()
-</code>
-    </div>
+    <h2 id="codeing-web-scraper">2.0.0 Codeing the Web Scraper</h2>
+
+    <p>This staging/production workflow allows us to make changes, show things to clients, experiment, etc.
+        - all within a sandboxed server without causing any changes to the live production site that users
+        are, well, using.
+    </p>
 
     <div class="micro-step">
-        <strong>1.0.8</strong>
-        <p>Run the app:</p>
+        <strong>2.0.0</strong>
+        <p>Open up app.py in your favorite editor and add the following code</p>
         <code>
-$ python app.py
-</code>
+            from bs4 import BeautifulSoup<br/><br />
+
+            with open('./shazam.html', 'r') as shazamFile:<br/>
+            &#8195;shazamSoup = BeautifulSoup(shazamFile, 'html.parser')
+        </code>
     </div>
 
     <div class="card utl-margin-vert-60">
@@ -198,8 +182,7 @@ $ python app.py
                 <a href="http://localhost:5000/">http://localhost:5000/</a>.</p>
             <p>
                 <span class="tooltipped tooltip" data-position="top" data-tooltip="In the terminal: Ctrl+C">Kill
-                    the
-                    server</span> when you're done.
+                    the server</span> when you're done.
             </p>
         </div>
 
@@ -208,18 +191,6 @@ $ python app.py
             <button>button</button>
         </div>
     </div>
-
-    <p>Next we're going to set up our Heroku environments for both our production and staging app</p>
-
-    <hr />
-
-    <h2 id="product-workflow">2.0.0 Staging/Production Workflow</h2>
-
-    <p>This staging/production workflow allows us to make changes, show things to clients, experiment, etc.
-        - all within a sandboxed server without causing any changes to the live production site that users
-        are,
-        well, using.
-    </p>
 
     <div class="micro-step">
         <strong>2.0.0</strong>
@@ -282,13 +253,7 @@ $ git push stage master
         </div>
     </div>
 
-    <p>However, if you try the same
-        thing on
-        the
-        production site you will get an error. So we can build things and test them out in the staging
-        environment
-        and
-        then when we're happy with the changes, we can push them live to production.</p>
+    <p>However, if you try the same thing on the production site you will get an error. So we can build things and test them out in the staging environment and then when we're happy with the changes, we can push them live to production.</p>
 
     <p>Let's push our site to production now that we're happy with it - git push pro master</p>
 
@@ -298,29 +263,17 @@ $ git push stage master
 
     <h2 id="config-settings">3.0.0 Config Settings</h2>
 
-    <p>The last thing that we're going to do is set up different config environments for our app. Often
-        there
-        are
-        things
-        that are going to be different between your local, staging, and production setups. You'll want to
-        connect to
-        different databases, have different AWS keys, etc. Let's set up a config file to deal with the
-        different
-        environments.</p>
+    <p>The last thing that we're going to do is set up different config environments for our app. Often there are things that are going to be different between your local, staging, and production setups. You'll want to connect to different databases, have different AWS keys, etc. Let's set up a config file to deal with the different environments.</p>
 
-    <p>Add a config.py file to your project root:</p>
+    <p>Add a config.py file to your project root</p>
     <code>
 $ touch config.py
 </code>
 
-    <p>With our config file we're going to borrow a bit from how Django's config is set up. We'll have a
-        base
-        config
-        class that the other config classes inherit from. Then we'll import the appropriate config class as
-        needed.
+    <p>With our config file we're going to borrow a bit from how Django's config is set up. We'll have a base config class that the other config classes inherit from. Then we'll import the appropriate config class as needed.
     </p>
 
-    <p>Add the following to your newly created config.py file:</p>
+    <p>Add the following to your newly created config.py file</p>
     <code>
 import os<br/>
 basedir = os.path.abspath(os.path.dirname(__file__))<br/><br/>
@@ -351,43 +304,23 @@ class TestingConfig(Config):<br/>
 &#8195;TESTING = True<br/>
 </code>
 
-    <p>We imported os and then set the basedir variable as a relative path from any place we call it to this
-        file.
-        We
-        then set up a base Config() class with some basic setup that our other config classes inherit from.
-        Now
-        we'll be
-        able to import the appropriate config class based on the current environment. Thus, we can use
-        environment
-        variables to choose which settings we're going to use based on the environment - e.g., local,
-        staging,
-        production.</p>
+    <p>We imported os and then set the basedir variable as a relative path from any place we call it to this file. We then set up a base Config() class with some basic setup that our other config classes inherit from. Now we'll be able to import the appropriate config class based on the current environment. Thus, we can use environment variables to choose which settings we're going to use based on the environment - e.g., local, staging, production.</p>
 
     <h3 id="local-settings">3.1.0 Local Settings</h3>
-    <p>To set up our application with environment variables, we're going to use autoenv. This program allows
-        us
-        to
-        set
-        commands that will run every time we cd into our directory. In order to use it, we will need to
-        install
-        it
-        globally. First, exit out of your virtual environment in the terminal, install autoenv, then and add
-        a
-        .env
-        file:</p>
+    <p>To set up our application with environment variables, we're going to use autoenv. This program allows us to set commands that will run every time we cd into our directory. In order to use it, we will need to install it globally. First, exit out of your virtual environment in the terminal, install autoenv, add a .env file</p>
 
     <code>
-$ pip install autoenv==1.0.0<br/>
-$ touch .env
-</code>
+        $ pip install autoenv==1.0.0<br/>
+        $ touch .env
+    </code>
 
-    <p>Next, in your .env file, add the following:</p>
+    <p>Next, in your .env file, add the following</p>
     <code>
 source env/bin/activate<br/>
 export APP_SETTINGS="config.DevelopmentConfig"
 </code>
 
-    <p>Run the following to update then refresh your .bashrc:</p>
+    <p>Run the following to update then refresh your .bashrc</p>
     <code>
 $ echo "source `which activate.sh`" >> ~/.bashrc<br/>
 $ source ~/.bashrc
@@ -401,17 +334,17 @@ $ source ~/.bashrc
     <h3 id="heroku-settings">3.2.0 Heroku Settings</h3>
     <p>Similarly we're going to set environment variables on Heroku.</p>
 
-    <p>For staging run the following command:</p>
+    <p>For staging run the following command</p>
     <code>
 $ heroku config:set APP_SETTINGS=config.StagingConfig --remote stage
 </code>
 
-    <p>For production:</p>
+    <p>For production</p>
     <code>
 $ heroku config:set APP_SETTINGS=config.ProductionConfig --remote pro
 </code>
 
-    <p>To make sure that we use the right environment change app.py:</p>
+    <p>To make sure that we use the right environment change app.py</p>
     <code>
 import os<br/>
 from flask import Flask<br/><br/>
@@ -445,13 +378,13 @@ if __name__ == '__main__':<br/>
     <p>Want to test the environment variables out to make sure it's detecting the right environment (sanity
         check!)?
         Add
-        a print statement to app.py:</p>
+        a print statement to app.py</p>
 
     <code>
 print(os.environ['APP_SETTINGS'])
 </code>
 
-    <p>Now when you run the app, it will show which config settings it's importing:</p>
+    <p>Now when you run the app, it will show which config settings it's importing</p>
 
     <div class="sub-h6">Local:</div>
     <code>

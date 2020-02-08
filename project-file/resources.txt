@@ -1,1 +1,5 @@
 https://thispointer.com/python-how-to-add-append-key-value-pairs-in-dictionary-using-dict-update/
+https://pythonspot.com/save-a-dictionary-to-a-file/
+https://beautiful-soup-4.readthedocs.io/en/latest/
+https://www.reddit.com/r/learnpython/comments/3wzgse/python_beautifulsoup_question_is_there_a_way_to/
+https://stackoverflow.com/questions/8270092/remove-all-whitespace-in-a-string-in-python

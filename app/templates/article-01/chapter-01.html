@@ -251,11 +251,24 @@
 
     <p>Beautiful Soup is a Python library for pulling data out of HTML and XML files. It works with your favorite parser to provide idiomatic ways of navigating, searching, and modifying the parse tree.</p>
 
-    <!--  
-    The find_all method and it's parameters
-    What did it out put
-    that kind of class is it and what methods does it have?
-    -->
+    <p>Beautiful Soup defines a lot of methods for searching the parse tree, but they're all very similar. I'm going to spend a lot of time explaining the two most popular methods: find() and find_all(). The other methods take almost exactly the same arguments, so I’ll just cover them briefly.</p>
+
+    <p>The find_all() method looks through a tag's descendants and retrieves all descendants that match your filters. I gave several examples in Kinds of filters, but here are a few more:</p>
+
+    <p>Some attributes, like the data-* attributes in HTML 5, have names that can’t be used as the names of keyword arguments:</p>
+
+    <code>
+        data_soup = BeautifulSoup('&lt;div data-foo="value"&gt;foo!&lt;/div&gt;')<br/>
+        data_soup.find_all(data-foo="value")<br/>
+        >> SyntaxError: keyword can't be an expression
+    </code>
+
+    <p>You can use these attributes in searches by putting them into a dictionary and passing the dictionary into find_all() as the attrs argument:</p>
+
+    <code>
+        data_soup.find_all(attrs={"data-foo": "value"})<br/>
+        >> [&lt;div data-foo="value"&gt;foo!&lt;/div&gt;]
+    </code>
 
     <div class="micro-step">
         <strong>3.0.1</strong>
@@ -297,21 +310,69 @@
         </code>
     </div>
 
-    <!-- 
-        What does the loop do?
-        Reiterate what `artist = i.find('div', attrs={'class':'artist'})` does
-        What does `artist_list.append(" ".join(artist.a.text.split()))` do?
-            - artist_list.append
-            - " ".join(artist.a.text.split())
-            - artist.a.text
-            - artist.a
-            - artist
+    <p>Output of `details = shazamSoup.find_all('div', attrs={'class':'details'})`</p>
 
-        Create empty lists
-        Why use try / except
+    <code>
+        &lt;div class="details details grid grid-vertical grid-space-between"&gt;<br/>
+        &#8195;&lt;div class="title" data-track-title=""&gt;<br/>
+        &#8195;&#8195;&lt;meta content="No Necesitas A Carlo" itemprop="name"/&gt;<br/>
+        &#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=track-click,label=details" href="https://www.shazam.com/track/47131805/no-necesitas-a-carlo"&gt;No Necesitas A Carlo&lt;/a&gt;<br/>
+        &#8195;&lt;/div&gt;<br/><br/>
 
-        What does zip() do and why do we need it?
-     -->
+        &#8195;&lt;div class="artist" data-track-artist="40173391" itemprop="byArtist" itemscope="" itemtype="http://schema.org/MusicGroup"&gt;<br/>
+        &#8195;&#8195;&lt;meta content="banda-pequeños-musical" itemprop="name"/&gt;<br/>
+        &#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=artist-click,label=from-track" href="https://www.shazam.com/artist/40173391/banda-pequeños-musical" itemprop="url"&gt;Banda Pequeños Musical&lt;/a&gt;<br/>
+        &#8195;&lt;/div&gt;<br/>
+        &lt;/div&gt;
+    </code>
+
+    <p>We want to tagetd the `div` with the class of `title` and `artist`. We do that by calling `CLASS_NAME = i.find('div', attrs={'class':'CLASS_NAME'})`</p>
+
+    <p>The output for the artist is:</p>
+
+    <code>
+        &#8195;&lt;div class="artist" data-track-artist="40173391" itemprop="byArtist" itemscope="" itemtype="http://schema.org/MusicGroup"&gt;<br/>
+        &#8195;&#8195;&lt;meta content="banda-pequeños-musical" itemprop="name"/&gt;<br/>
+        &#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=artist-click,label=from-track" href="https://www.shazam.com/artist/40173391/banda-pequeños-musical" itemprop="url"&gt;Banda Pequeños Musical&lt;/a&gt;<br/>
+        &#8195;&lt;/div&gt;
+    </code>
+
+    <p>The output for the title is:</p>
+
+    <code>
+        &#8195;&lt;div class="title" data-track-title=""&gt;<br/>
+        &#8195;&#8195;&lt;meta content="No Necesitas A Carlo" itemprop="name"/&gt;<br/>
+        &#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=track-click,label=details" href="https://www.shazam.com/track/47131805/no-necesitas-a-carlo"&gt;No Necesitas A Carlo&lt;/a&gt;<br/>
+        &#8195;&lt;/div&gt;
+    </code>
+
+    <p>Then we want to target the `&lt;a&gt;` of each object. We do that with the following code.</p>
+
+    <code>
+        artist.a.text
+    </code>
+
+    <p>Since we have the `&lt;a&gt;` isolated we can look for the text at the same time. The final output being:</p>
+
+    <code>
+        Banda Pequeños Musical
+    </code>
+
+    <p>But you'll see that some of the title has spaces in between them. This is white spaces genereated by being rendered in HTML. To fix this we split all the words in the string and rejoin them with a singular space. Once we have the string how we want it, we append it to the empty array.</p>
+
+    <p>Another issue we run into is that not all `<div>` are filled with data. We have the added issue of the program stopping with an AttributeError. To fix this we will implament a try and except block to handle the issue.</p>
+
+    <p>Now we have two arrays, we need a way to pair the title with the artist. Visually we align the two arrays and pair them together. It looks like a zipper running down the arrays.</p>
+
+    <div class="card utl-margin-vert-60">
+        <div class="card__title">
+            <i class="material-icons md-36">image</i>
+            <div class="card__title--main">Figure 6.0</div>
+        </div>
+        <div class="card__image">
+            <img style="max-width: 350px; margin:0 auto;" src="{{ url_for('static', filename='images/zip.png')}}" alt="python video">
+        </div>
+    </div>
 
     <p>Now that we have the basic code. We can quickly export it as JSON in the next step</p>
 
@@ -320,7 +381,7 @@
     <h2 id="exporting-data-to-json">4.0.0 Exporting Data to JSON</h2>
 
     <div class="micro-step">
-        <strong>4.0.0</strong>
+        <strong>4.0.1</strong>
         <p>Update your app.py code at the end of the file. The output should look like Figure 6.0</p>
         <code>
         with open('./track-list.json', 'w') as trackFile:<br/>
@@ -331,7 +392,7 @@
     <div class="card utl-margin-vert-60">
         <div class="card__title">
             <i class="material-icons md-36">image</i>
-            <div class="card__title--main">Figure 6.0</div>
+            <div class="card__title--main">Figure 7.0</div>
         </div>
         <div class="card__image">
             <img src="https://source.unsplash.com/800x400/daily" alt="python video">

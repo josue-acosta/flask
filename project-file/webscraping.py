@@ -8,7 +8,7 @@ track_list = zip(title_list, artist_list)
 track_dict = {}
 
 
-with open('./shazam.html', 'r') as shazamFile:
+with open('project-file/shazam.html', 'r') as shazamFile:
     shazamSoup = BeautifulSoup(shazamFile, 'html.parser')
 
     # get `details` div

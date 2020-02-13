@@ -1,10 +1,21 @@
 {% extends "templates/website-template.html" %}
 
 {% block page %}
-<img src="{{ url_for('static', filename='images/background.jpg')}}" alt="">
-<h1 style="font-family: 'Knewave';">20XX</h1>
+<div class="body__container article__container">
+    <div class="card card--course util-margin-top-30">
+        <div class="card__title">
+            <div class="card__title--main">Article 01</div>
+        </div>
 
-<a href="{{ url_for('article_01_welcome') }}">
-    <div class="navigation--title">article 01</div>
-</a>
+        <div class="card__content">
+            <p>Write a web scraper that creates a YouTube playlist based on songs in your Shazam library.</p>
+        </div>
+
+        <div class="card__button">
+            <div class="button">
+                <a href="{{ url_for('article_01_welcome') }}">go to article</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

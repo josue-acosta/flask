@@ -1,0 +1,16 @@
+{
+    "title": "Working with JSON",
+    "category_type": "one-shot",
+    "objective_paragraph": "to use JavaScript Object Notation ( JSON ) to populate rubric elements of articles.",
+    "articles": [
+        {
+            "chapter": "One",
+            "teaser": "Set up the project archetechture and functions to accept JSON as data and populate the view template with such data.",
+            "article_link": "article_02_chapter_01"
+        }
+    ],
+    "navigation": {
+        "welcome_link": "article_02_welcome",
+        "resource_link": "article_02_resource"
+    }
+}

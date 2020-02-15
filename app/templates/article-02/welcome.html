@@ -1,0 +1,73 @@
+{% extends "templates/article-template.html" %}
+
+{% block navigation %}
+{{super()}}
+<section>
+    <nav class="navigation util-margin-top-30">
+        <ul class="navigation__menu-list">
+            <li>
+                <a href="{{ url_for( navigation.welcome_link ) }}">
+                    <div class="navigation--title">welcome</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for( articles[0].article_link ) }}">
+                    <div class="navigation--title">get started</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for( navigation.resource_link ) }}">
+                    <div class="navigation--title">resources</div>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</section>
+
+{% endblock %}
+
+{% block page %}
+<section>
+    <img src="{{ url_for('static', filename='images/chapter-02-hero-welcome.png') }}" alt="json hero image">
+</section>
+
+<section class="page-header">
+    <h1>{{ title }}</h1>
+    <div class="overline">Category: {{ category_type }}</div>
+
+    <p class="objective-paragraph">Welcome! The <strong>objective</strong> of this tutorial is {{ objective_paragraph }}</p>
+</section>
+
+{% for article in articles %}
+
+<div class="card card--course util-margin-top-30">
+    <div class="card__title">
+        <div class="card__title--main">Chapter {{ article.chapter }}</div>
+    </div>
+    <div class="card__content">
+        <p>{{ article.teaser }}</p>
+    </div>
+
+    <div class="card__button">
+        <div class="button">
+            <a href="{{ url_for( article.article_link ) }}">go to chapter</a>
+        </div>
+    </div>
+</div>
+
+<div class="card--course__connector">
+    <div></div>
+    <div></div>
+</div>
+
+{% endfor %}
+
+<div class="card card--course card--course__success">
+    <div class="card__title">
+        <div class="card__title--main h1">Complete</div>
+    </div>
+</div>
+
+<hr />
+
+{% endblock %}

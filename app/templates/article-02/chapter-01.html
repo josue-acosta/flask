@@ -1,9 +1,34 @@
 {% extends "templates/article-template.html" %}
 
+{% block navigation %}
+{{super()}}
+<section>
+    <nav class="navigation util-margin-top-30">
+        <ul class="navigation__menu-list">
+            <li>
+                <a href="{{ url_for( navigation.welcome_link ) }}">
+                    <div class="navigation--title">welcome</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for( chapters[0].chapter_link ) }}">
+                    <div class="navigation--title">get started</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for( navigation.resource_link ) }}">
+                    <div class="navigation--title">resources</div>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</section>
+{% endblock %}
+
 {% block page %}
 <section class="page-header">
-    <h1>Step One</h1>
-    <div class="overline">1/2 of Python Web Scraper</div>
+    <h1>Step {{ chapters[0].number }}</h1>
+    <div class="overline">{{ title }}</div>
 
     <p class="objective-paragraph">Welcome! The <strong>objective</strong> of this step is to set up project folder and write the code that crawls through your Shazam libray.</p>
 </section>
@@ -11,21 +36,11 @@
 <section class="table-of-contents">
     <h2 class="table-of-contents__title">Table of Contents</h2>
     <ul>
+        {% for header in step_one.article_headers %}
         <li>
-            <a href="http://localhost:5500/article-01/chapter-01#project-setup">Project Setup</a>
+            <a href="{{ url_for( chapters[0].chapter_link )}}#{{ header.link }}">{{ header.header }}</a>
         </li>
-        <li>
-            <a href="http://localhost:5500/article-01/chapter-01#codeing-web-scraper">Codeing the Web Scraper</a>
-        </li>
-        <li>
-            <a href="http://localhost:5500/article-01/chapter-01#intro-to-beautifulsoup">Intro to BeautifulSoup4 Methods</a>
-        </li>
-        <li>
-            <a href="http://localhost:5500/article-01/chapter-01#exporting-data-to-json">Exporting Data to JSON</a>
-        </li>
-        <li>
-            <a href="http://localhost:5500/article-01/chapter-01#conclusion">Conclusion</a>
-        </li>
+        {% endfor %}
     </ul>
 </section>
 
@@ -49,27 +64,33 @@
 
     <hr>
 
-    <h2 id="project-setup">1.0.0 Project Setup</h2>
+    <h2 id="{{ step_one.article_headers[0].link }}">1.0.0 {{ step_one.article_headers[0].header }}</h2>
     <p>Let's begin with the project's folder architecture</p>
 
     <div class="card util-margin-vert-60">
         <div class="card__title">
             <i class="material-icons md-36">flag</i>
-            <div class="card__title--main">Before You Start</div>
+            <div class="card__title--main">In This Article</div>
         </div>
 
         <div class="card__content">
             <p>Even though we'll go through them, you should have some familiarity with the following tools</p>
 
             <ul>
-                <li class="inine-list">Virtualenv -
-                    <a class="straight-link" href="https://realpython.com/python-virtual-environments-a-primer">
+                <li class="inine-list">JSON Module -
+                    <a class="straight-link" href="https://docs.python.org/3/library/json.html">
                         Learn More
                         <i class="material-icons md-18">open_in_new</i>
                     </a>
                 </li>
-                <li class="inine-list">git/Github -
-                    <a class="straight-link" href="https://realpython.com/python-git-github-intro/">
+                <li class="inine-list">Unpacking Functions -
+                    <a class="straight-link" href="https://book.pythontips.com/en/latest/args_and_kwargs.html">
+                        Learn More
+                        <i class="material-icons md-18">open_in_new</i>
+                    </a>
+                </li>
+                <li class="inine-list">app.get_resource() -
+                    <a class="straight-link" href="https://flask.palletsprojects.com/en/1.1.x/api/#flask.Flask.open_resource">
                         Learn More
                         <i class="material-icons md-18">open_in_new</i>
                     </a>
@@ -81,149 +102,80 @@
     <div class="micro-step">
         <strong>1.0.1</strong>
         <p>Set up your working directory</p>
-        <code>$ mkdir playlist-webscraper && cd playlist-webscraper</code>
+        <code>$ mkdir json-project && cd json-project</code>
     </div>
 
     <div class="micro-step">
         <strong>1.0.2</strong>
-        <p>Initialize a new git repo within your working directory</p>
-        <code>$ git init</code>
+        <p>Create a new file</p>
+        <code>$ touch app.py </code>
     </div>
 
     <div class="micro-step">
         <strong>1.0.3</strong>
-        <p>Set up a virtual environment to use for the application</p>
-        <code>$ pyvenv-3.5 env<br/>$ source env/bin/activate</code>
+        <p>Add whatever JSON data you want to work with. In this case we'll use the following code. Save it as `data.json`.</p>
+        <code>
+            {<br/>
+            &#8195;"title": "Working with JSON",<br/>
+            &#8195;"category_type": "one-shot",<br/>
+            &#8195;"objective_paragraph": "to use JavaScript Object Notation ( JSON ) to populate rubric elements of articles&#8195;",<br/>
+            &#8195;"chapters": [<br/>
+            &#8195;&#8195;{<br/>
+            &#8195;&#8195;&#8195;"number": "One",<br/>
+            &#8195;&#8195;&#8195;"teaser": "Set up the project archetechture and functions to accept JSON as data and populate the view template with such data.",<br/>
+            &#8195;&#8195;&#8195;"chapter_link": "article_02_chapter_01"<br/>
+            &#8195;&#8195;}<br/>
+            &#8195;]<br/>
+            }<br/>
+        </code>
     </div>
 
-    <p>You should now see you (env) to the left of the prompt in the terminal, indicating that you are now
-        working in a virtual environment</p>
-
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">image</i>
-            <div class="card__title--main">Figure 1.0</div>
-        </div>
-        <div class="card__image">
-            <img src="https://source.unsplash.com/800x400/daily" alt="python video">
-        </div>
-    </div>
-
-    <ul class="collapsible util-margin-vert-60">
-        <li>
-            <div class="collapsible-header">
-                <i class="material-icons md-24">keyboard_arrow_down</i>
-                <div class="collapsible-title">virtualenv Commands</div>
-            </div>
-            <div class="collapsible-body">
-                <div class="micro-step">
-                    <p>Turn venv off</p>
-                    <code>$ deactivate</code>
-                </div>
-                <div class="micro-step">
-                    <p>Turn venv on</p>
-                    <code>$ source venv/bin/activate</code>
-                </div>
-            </div>
-        </li>
-    </ul>
-
-    <div class="micro-step">
-        <strong>1.0.4</strong>
-        <p>Set up the basic structure for the app. Add the following files to your
-            playlist-webscraper folder</p>
-        <code>$ touch app.py .gitignore README.md requirements.txt</code>
-    </div>
-
-    <p>This will give you the following structure</p>
+    <p>Having both files in the same directory will give you the following structure</p>
     <code>
-        ├── .gitignore<br/>
+        json-project<br />
         ├── app.py<br/>
-        ├── README.md<br/>
-        └── requirements.txt
+        ├── data.json<br/>
     </code>
 
-    <div class="micro-step">
-        <strong>1.0.5</strong>
-        <p>Next install </p>
-        <code>$ pip3 install beautifulsoup4</code>
-    </div>
-
-    <div class="micro-step">
-        <strong>1.0.6</strong>
-        <p>Add the installed libraries to our requirements.txt file</p>
-        <code>$ pip freeze > requirements.txt</code>
-    </div>
 
     <p class="util-margin-top-30">With our project folder set up with the basics let's start codeing!!!</p>
 
     <hr />
 
-    <h2 id="codeing-web-scraper">2.0.0 Codeing the Web Scraper</h2>
+    <h2 id="{{ step_one.article_headers[1].link }}">2.0.0 {{ step_one.article_headers[1].header }}</h2>
 
-    <p>This step will will write code that pulls in an HTML file and parses through it, pulling the content we want.</p>
+    <p>In this step we will imoprt the JOSN module and select the resource we want to import.</p>
 
     <div class="micro-step">
         <strong>2.0.1</strong>
-        <p>Go to Shazam.com and log in</p>
+        <p>Import the JSON module by adding this to the top of your file</p>
+        <code>import json</code>
     </div>
 
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">image</i>
-            <div class="card__title--main">Figure 2.0</div>
-        </div>
-        <div class="card__image">
-            <img src="https://source.unsplash.com/800x400/daily" alt="python video">
-        </div>
-    </div>
+    <p>We're going to use one of Flask's function called `open_resource()`. </p>
 
     <div class="micro-step">
         <strong>2.0.2</strong>
         <p>Open up the inspecter tool</p>
         <code>
-            Command + Option + I
+        with app.open_resource("./data.json", "r" ) as data_file:<br/>
+        &#8195;data = json.load(data_file)
         </code>
     </div>
 
+    <!-- 
+        how does app.open_resource work
+        how do I use app.open_resource
+        what's the file path of app.open_resource
+    -->
+
     <div class="micro-step">
         <strong>2.0.3</strong>
-        <p>Select the ul tag with all the list items. Note: you'll have to scroll down to get all the item to generate</p>
-    </div>
-
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">image</i>
-            <div class="card__title--main">Figure 3.0</div>
-        </div>
-        <div class="card__image">
-            <img src="https://source.unsplash.com/800x400/daily" alt="python video">
-        </div>
-    </div>
-
-    <div class="micro-step">
-        <strong>2.0.4</strong>
-        <p>Copy and paste it to a file. In this example we save it as `shazam.html`</p>
-    </div>
-
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">image</i>
-            <div class="card__title--main">Figure 4.0</div>
-        </div>
-        <div class="card__image">
-            <img src="https://source.unsplash.com/800x400/daily" alt="python video">
-        </div>
-    </div>
-
-    <div class="micro-step">
-        <strong>2.0.5</strong>
-        <p>Push changes to master</p>
+        <p>To pass the information to the template and the page add this to the router</p>
         <code>
-            $ git status<br />
-            $ git add .<br />
-            $ git commit -m "YOUR COMMENT HERE"<br />
-            $ git push origin master
+            @app.route('/article-02/welcome')<br/>
+            def article_02_welcome():<br/>
+            &#8195;return render_template("article-02/welcome.html", **data)
         </code>
     </div>
 

@@ -2,15 +2,39 @@
     "title": "Working with JSON",
     "category_type": "one-shot",
     "objective_paragraph": "to use JavaScript Object Notation ( JSON ) to populate rubric elements of articles.",
-    "articles": [
+    "chapters": [
         {
-            "chapter": "One",
+            "number": "One",
             "teaser": "Set up the project archetechture and functions to accept JSON as data and populate the view template with such data.",
-            "article_link": "article_02_chapter_01"
+            "chapter_link": "article_02_chapter_01"
         }
     ],
     "navigation": {
         "welcome_link": "article_02_welcome",
         "resource_link": "article_02_resource"
+    },
+    "step_one": {
+        "article_headers": [
+            {
+                "header": "Project Setup",
+                "link": "project-setup"
+            },
+            {
+                "header": "Importing JSON",
+                "link": "importing-json"
+            },
+            {
+                "header": "JSON Methods",
+                "link": "json-methods"
+            },
+            {
+                "header": "Unpacking Dictionaries",
+                "link": "unpacking-dictionaries"
+            },
+            {
+                "header": "Using JSON in Templates",
+                "link": "using-json-in-templates"
+            }
+        ]
     }
 }

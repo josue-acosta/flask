@@ -11,7 +11,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url_for( articles[0].article_link ) }}">
+                <a href="{{ url_for( chapters[0].chapter_link ) }}">
                     <div class="navigation--title">get started</div>
                 </a>
             </li>
@@ -23,7 +23,6 @@
         </ul>
     </nav>
 </section>
-
 {% endblock %}
 
 {% block page %}
@@ -33,24 +32,26 @@
 
 <section class="page-header">
     <h1>{{ title }}</h1>
+
     <div class="overline">Category: {{ category_type }}</div>
 
     <p class="objective-paragraph">Welcome! The <strong>objective</strong> of this tutorial is {{ objective_paragraph }}</p>
 </section>
 
-{% for article in articles %}
+{% for chapter in chapters %}
 
 <div class="card card--course util-margin-top-30">
     <div class="card__title">
-        <div class="card__title--main">Chapter {{ article.chapter }}</div>
+        <div class="card__title--main">Chapter {{ chapter.number }}</div>
     </div>
+
     <div class="card__content">
-        <p>{{ article.teaser }}</p>
+        <p>{{ chapter.teaser }}</p>
     </div>
 
     <div class="card__button">
         <div class="button">
-            <a href="{{ url_for( article.article_link ) }}">go to chapter</a>
+            <a href="{{ url_for( chapter.chapter_link ) }}">go to chapter</a>
         </div>
     </div>
 </div>

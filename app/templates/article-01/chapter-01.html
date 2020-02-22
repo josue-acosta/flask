@@ -2,423 +2,423 @@
 
 {% block page %}
 <section class="page-header">
-    <h1>Step One</h1>
-    <div class="overline">1/2 of Python Web Scraper</div>
+	<h1>Step One</h1>
+	<div class="overline">1/2 of Python Web Scraper</div>
 
-    <p class="objective-paragraph">Welcome! The <strong>objective</strong> of this step is to set up project folder and write the code that crawls through your Shazam libray.</p>
+	<p class="objective-paragraph">Welcome! The <strong>objective</strong> of this step is to set up project folder and write the code that crawls through your Shazam libray.</p>
 </section>
 
 <section class="table-of-contents">
-    <h2 class="table-of-contents__title">Table of Contents</h2>
-    <ul>
-        <li>
-            <a href="http://localhost:5500/article-01/chapter-01#project-setup">Project Setup</a>
-        </li>
-        <li>
-            <a href="http://localhost:5500/article-01/chapter-01#codeing-web-scraper">Codeing the Web Scraper</a>
-        </li>
-        <li>
-            <a href="http://localhost:5500/article-01/chapter-01#intro-to-beautifulsoup">Intro to BeautifulSoup4 Methods</a>
-        </li>
-        <li>
-            <a href="http://localhost:5500/article-01/chapter-01#exporting-data-to-json">Exporting Data to JSON</a>
-        </li>
-        <li>
-            <a href="http://localhost:5500/article-01/chapter-01#conclusion">Conclusion</a>
-        </li>
-    </ul>
+	<h2 class="table-of-contents__title">Table of Contents</h2>
+	<ul>
+		<li>
+			<a href="http://localhost:5500/article-01/chapter-01#project-setup">Project Setup</a>
+		</li>
+		<li>
+			<a href="http://localhost:5500/article-01/chapter-01#codeing-web-scraper">Codeing the Web Scraper</a>
+		</li>
+		<li>
+			<a href="http://localhost:5500/article-01/chapter-01#intro-to-beautifulsoup">Intro to BeautifulSoup4 Methods</a>
+		</li>
+		<li>
+			<a href="http://localhost:5500/article-01/chapter-01#exporting-data-to-json">Exporting Data to JSON</a>
+		</li>
+		<li>
+			<a href="http://localhost:5500/article-01/chapter-01#conclusion">Conclusion</a>
+		</li>
+	</ul>
 </section>
 
 <section class="callout-section util-padding-vert-50">
-    <div class="callout callout__content callout_get_code">
-        <i class="material-icons">
-            code
-        </i>
-        <p>Need the code? Grab it from the repo.</p>
-    </div>
+	<div class="callout callout__content callout_get_code">
+		<i class="material-icons">
+			code
+		</i>
+		<p>Need the code? Grab it from the repo.</p>
+	</div>
 
-    <div class="callout callout__content callout_get_code">
-        <i class="material-icons">
-            video_library
-        </i>
-        <p>Watch the tutorial video on YouTube</p>
-    </div>
+	<div class="callout callout__content callout_get_code">
+		<i class="material-icons">
+			video_library
+		</i>
+		<p>Watch the tutorial video on YouTube</p>
+	</div>
 </section>
 
 <section class="tutorial-body">
 
-    <hr>
-
-    <h2 id="project-setup">1.0.0 Project Setup</h2>
-    <p>Let's begin with the project's folder architecture</p>
-
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">flag</i>
-            <div class="card__title--main">Before You Start</div>
-        </div>
-
-        <div class="card__content">
-            <p>Even though we'll go through them, you should have some familiarity with the following tools</p>
-
-            <ul>
-                <li class="inine-list">Virtualenv -
-                    <a class="straight-link" href="https://realpython.com/python-virtual-environments-a-primer">
-                        Learn More
-                        <i class="material-icons md-18">open_in_new</i>
-                    </a>
-                </li>
-                <li class="inine-list">git/Github -
-                    <a class="straight-link" href="https://realpython.com/python-git-github-intro/">
-                        Learn More
-                        <i class="material-icons md-18">open_in_new</i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="micro-step">
-        <strong>1.0.1</strong>
-        <p>Set up your working directory</p>
-        <code>$ mkdir playlist-webscraper && cd playlist-webscraper</code>
-    </div>
-
-    <div class="micro-step">
-        <strong>1.0.2</strong>
-        <p>Initialize a new git repo within your working directory</p>
-        <code>$ git init</code>
-    </div>
-
-    <div class="micro-step">
-        <strong>1.0.3</strong>
-        <p>Set up a virtual environment to use for the application</p>
-        <code>$ pyvenv-3.5 env<br/>$ source env/bin/activate</code>
-    </div>
-
-    <p>You should now see you (env) to the left of the prompt in the terminal, indicating that you are now
-        working in a virtual environment</p>
-
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">image</i>
-            <div class="card__title--main">Figure 1.0</div>
-        </div>
-        <div class="card__image">
-            <img src="https://source.unsplash.com/800x400/daily" alt="python video">
-        </div>
-    </div>
-
-    <ul class="collapsible util-margin-vert-60">
-        <li>
-            <div class="collapsible-header">
-                <i class="material-icons md-24">keyboard_arrow_down</i>
-                <div class="collapsible-title">virtualenv Commands</div>
-            </div>
-            <div class="collapsible-body">
-                <div class="micro-step">
-                    <p>Turn venv off</p>
-                    <code>$ deactivate</code>
-                </div>
-                <div class="micro-step">
-                    <p>Turn venv on</p>
-                    <code>$ source venv/bin/activate</code>
-                </div>
-            </div>
-        </li>
-    </ul>
-
-    <div class="micro-step">
-        <strong>1.0.4</strong>
-        <p>Set up the basic structure for the app. Add the following files to your
-            playlist-webscraper folder</p>
-        <code>$ touch app.py .gitignore README.md requirements.txt</code>
-    </div>
-
-    <p>This will give you the following structure</p>
-    <code>
-        ├── .gitignore<br/>
-        ├── app.py<br/>
-        ├── README.md<br/>
-        └── requirements.txt
-    </code>
-
-    <div class="micro-step">
-        <strong>1.0.5</strong>
-        <p>Next install </p>
-        <code>$ pip3 install beautifulsoup4</code>
-    </div>
-
-    <div class="micro-step">
-        <strong>1.0.6</strong>
-        <p>Add the installed libraries to our requirements.txt file</p>
-        <code>$ pip freeze > requirements.txt</code>
-    </div>
-
-    <p class="util-margin-top-30">With our project folder set up with the basics let's start codeing!!!</p>
-
-    <hr />
-
-    <h2 id="codeing-web-scraper">2.0.0 Codeing the Web Scraper</h2>
-
-    <p>This step will will write code that pulls in an HTML file and parses through it, pulling the content we want.</p>
-
-    <div class="micro-step">
-        <strong>2.0.1</strong>
-        <p>Go to Shazam.com and log in</p>
-    </div>
-
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">image</i>
-            <div class="card__title--main">Figure 2.0</div>
-        </div>
-        <div class="card__image">
-            <img src="https://source.unsplash.com/800x400/daily" alt="python video">
-        </div>
-    </div>
-
-    <div class="micro-step">
-        <strong>2.0.2</strong>
-        <p>Open up the inspecter tool</p>
-        <code>
-            Command + Option + I
-        </code>
-    </div>
-
-    <div class="micro-step">
-        <strong>2.0.3</strong>
-        <p>Select the ul tag with all the list items. Note: you'll have to scroll down to get all the item to generate</p>
-    </div>
-
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">image</i>
-            <div class="card__title--main">Figure 3.0</div>
-        </div>
-        <div class="card__image">
-            <img src="https://source.unsplash.com/800x400/daily" alt="python video">
-        </div>
-    </div>
-
-    <div class="micro-step">
-        <strong>2.0.4</strong>
-        <p>Copy and paste it to a file. In this example we save it as `shazam.html`</p>
-    </div>
-
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">image</i>
-            <div class="card__title--main">Figure 4.0</div>
-        </div>
-        <div class="card__image">
-            <img src="https://source.unsplash.com/800x400/daily" alt="python video">
-        </div>
-    </div>
-
-    <div class="micro-step">
-        <strong>2.0.5</strong>
-        <p>Push changes to master</p>
-        <code>
-            $ git status<br />
-            $ git add .<br />
-            $ git commit -m "YOUR COMMENT HERE"<br />
-            $ git push origin master
-        </code>
-    </div>
-
-    <div class="micro-step">
-        <strong>2.1.0</strong>
-        <p>Run the app to test if it works. You should see simular results to figure 5.0</p>
-        <code>
-            $ python app.py
-        </code>
-    </div>
-
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">image</i>
-            <div class="card__title--main">Figure 5.0</div>
-        </div>
-        <div class="card__image">
-            <img src="https://source.unsplash.com/800x400/daily" alt="python video">
-        </div>
-    </div>
-
-    <hr>
-
-    <h2 id="intro-to-beautifulsoup">3.0.0 Intro to BeautifulSoup4 Methods</h2>
-
-    <p>Beautiful Soup is a Python library for pulling data out of HTML and XML files. It works with your favorite parser to provide idiomatic ways of navigating, searching, and modifying the parse tree.</p>
-
-    <p>Beautiful Soup defines a lot of methods for searching the parse tree, but they're all very similar. I'm going to spend a lot of time explaining the two most popular methods: find() and find_all(). The other methods take almost exactly the same arguments, so I’ll just cover them briefly.</p>
-
-    <p>The find_all() method looks through a tag's descendants and retrieves all descendants that match your filters. I gave several examples in Kinds of filters, but here are a few more:</p>
-
-    <p>Some attributes, like the data-* attributes in HTML 5, have names that can’t be used as the names of keyword arguments:</p>
-
-    <code>
-        data_soup = BeautifulSoup('&lt;div data-foo="value"&gt;foo!&lt;/div&gt;')<br/>
-        data_soup.find_all(data-foo="value")<br/>
-        >> SyntaxError: keyword can't be an expression
-    </code>
-
-    <p>You can use these attributes in searches by putting them into a dictionary and passing the dictionary into find_all() as the attrs argument:</p>
-
-    <code>
-        data_soup.find_all(attrs={"data-foo": "value"})<br/>
-        >> [&lt;div data-foo="value"&gt;foo!&lt;/div&gt;]
-    </code>
-
-    <div class="micro-step">
-        <strong>3.0.1</strong>
-        <p>Open up app.py in your favorite editor and add the following code</p>
-        <code>
-            artist_list = []<br/>
-            title_list = []<br/><br/>
-
-            track_list = zip(title_list, artist_list)<br/>
-            track_dict = {}<br/><br/>
-
-            with open('./shazam.html', 'r') as shazamFile:<br/>
-            &#8195;shazamSoup = BeautifulSoup(shazamFile, 'html.parser')<br/><br/>
-    
-            &#8195;# get `details` div<br/>
-            &#8195;&#8195;details = shazamSoup.find_all('div', attrs={'class':'details'})<br/><br/>
-
-            &#8195;for i in details:<br/>
-            &#8195;# loop through `details` div and get `artist` div<br/>
-            &#8195;artist = i.find('div', attrs={'class':'artist'})<br/><br/>
-    
-            &#8195;# loop through `artist` div and get a.text<br/>
-            &#8195;try:<br/>
-            &#8195;&#8195;artist_list.append(" ".join(artist.a.text.split()))<br/>
-            &#8195;except AttributeError:<br/>
-            &#8195;&#8195;artist_list.append(" ")<br/><br/>
-    
-    
-            &#8195;# loop through `details` div and get `title` div<br/>
-            &#8195;title = i.find('div', attrs={'class':'title'})<br/><br/>
-    
-            &#8195;# loop through `title` div and get a.text<br/>
-            &#8195;try:<br/>
-            &#8195;&#8195;title_list.append(" ".join(title.a.text.split()))<br/>
-            &#8195;except AttributeError:<br/>
-            &#8195;&#8195;title_list.append(" ")
-
-            track_dict.update(list(track_list))
-        </code>
-    </div>
-
-    <p>Output of `details = shazamSoup.find_all('div', attrs={'class':'details'})`</p>
-
-    <code>
-        &lt;div class="details details grid grid-vertical grid-space-between"&gt;<br/>
-        &#8195;&lt;div class="title" data-track-title=""&gt;<br/>
-        &#8195;&#8195;&lt;meta content="No Necesitas A Carlo" itemprop="name"/&gt;<br/>
-        &#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=track-click,label=details" href="https://www.shazam.com/track/47131805/no-necesitas-a-carlo"&gt;No Necesitas A Carlo&lt;/a&gt;<br/>
-        &#8195;&lt;/div&gt;<br/><br/>
-
-        &#8195;&lt;div class="artist" data-track-artist="40173391" itemprop="byArtist" itemscope="" itemtype="http://schema.org/MusicGroup"&gt;<br/>
-        &#8195;&#8195;&lt;meta content="banda-pequeños-musical" itemprop="name"/&gt;<br/>
-        &#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=artist-click,label=from-track" href="https://www.shazam.com/artist/40173391/banda-pequeños-musical" itemprop="url"&gt;Banda Pequeños Musical&lt;/a&gt;<br/>
-        &#8195;&lt;/div&gt;<br/>
-        &lt;/div&gt;
-    </code>
-
-    <p>We want to tagetd the `div` with the class of `title` and `artist`. We do that by calling `CLASS_NAME = i.find('div', attrs={'class':'CLASS_NAME'})`</p>
-
-    <p>The output for the artist is:</p>
-
-    <code>
-        &#8195;&lt;div class="artist" data-track-artist="40173391" itemprop="byArtist" itemscope="" itemtype="http://schema.org/MusicGroup"&gt;<br/>
-        &#8195;&#8195;&lt;meta content="banda-pequeños-musical" itemprop="name"/&gt;<br/>
-        &#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=artist-click,label=from-track" href="https://www.shazam.com/artist/40173391/banda-pequeños-musical" itemprop="url"&gt;Banda Pequeños Musical&lt;/a&gt;<br/>
-        &#8195;&lt;/div&gt;
-    </code>
-
-    <p>The output for the title is:</p>
-
-    <code>
-        &#8195;&lt;div class="title" data-track-title=""&gt;<br/>
-        &#8195;&#8195;&lt;meta content="No Necesitas A Carlo" itemprop="name"/&gt;<br/>
-        &#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=track-click,label=details" href="https://www.shazam.com/track/47131805/no-necesitas-a-carlo"&gt;No Necesitas A Carlo&lt;/a&gt;<br/>
-        &#8195;&lt;/div&gt;
-    </code>
-
-    <p>Then we want to target the `&lt;a&gt;` of each object. We do that with the following code.</p>
-
-    <code>
-        artist.a.text
-    </code>
-
-    <p>Since we have the `&lt;a&gt;` isolated we can look for the text at the same time. The final output being:</p>
-
-    <code>
-        Banda Pequeños Musical
-    </code>
-
-    <p>But you'll see that some of the title has spaces in between them. This is white spaces genereated by being rendered in HTML. To fix this we split all the words in the string and rejoin them with a singular space. Once we have the string how we want it, we append it to the empty array.</p>
-
-    <p>Another issue we run into is that not all `<div>` are filled with data. We have the added issue of the program stopping with an AttributeError. To fix this we will implament a try and except block to handle the issue.</p>
-
-    <p>Now we have two arrays, we need a way to pair the title with the artist. Visually we align the two arrays and pair them together. It looks like a zipper running down the arrays.</p>
-
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">image</i>
-            <div class="card__title--main">Figure 6.0</div>
-        </div>
-        <div class="card__image">
-            <img style="max-width: 350px; margin:0 auto;" src="{{ url_for('static', filename='images/zip.png')}}" alt="python video">
-        </div>
-    </div>
-
-    <p>Now that we have the basic code. We can quickly export it as JSON in the next step</p>
-
-    <hr />
-
-    <h2 id="exporting-data-to-json">4.0.0 Exporting Data to JSON</h2>
-
-    <div class="micro-step">
-        <strong>4.0.1</strong>
-        <p>Update your app.py code at the end of the file. The output should look like Figure 6.0</p>
-        <code>
-        with open('./track-list.json', 'w') as trackFile:<br/>
-        &#8195;trackFile.write(json.dumps(track_dict))
-        </code>
-    </div>
-
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">image</i>
-            <div class="card__title--main">Figure 7.0</div>
-        </div>
-        <div class="card__image">
-            <img src="https://source.unsplash.com/800x400/daily" alt="python video">
-        </div>
-    </div>
-
-    <hr />
-
-    <h2 id="conclusion">Conclusion</h2>
-    <p>With the setup out of the way, we're going to start to build out the word counting functionality of this app. In the next step we're going to set up our YouTube account to recive incoming data. We're also going to add the posting functionality.</p>
-
-    <section class="callout-section">
-        <div class="callout callout__content callout_get_code">
-            <i class="material-icons">
-                code
-            </i>
-            <p>Need the code? Grab it from the repo.</p>
-        </div>
-
-        <div class="callout callout__content callout_get_code">
-            <i class="material-icons">
-                video_library
-            </i>
-            <p>Watch the tutorial video on YouTube</p>
-        </div>
-    </section>
+	<hr>
+
+	<h2 id="project-setup">1.0.0 Project Setup</h2>
+	<p>Let's begin with the project's folder architecture</p>
+
+	<div class="card util-margin-vert-60">
+		<div class="card__title">
+			<i class="material-icons md-36">flag</i>
+			<div class="card__title--main">Before You Start</div>
+		</div>
+
+		<div class="card__content">
+			<p>Even though we'll go through them, you should have some familiarity with the following tools</p>
+
+			<ul>
+				<li class="inine-list">Virtualenv -
+					<a class="straight-link" href="https://realpython.com/python-virtual-environments-a-primer">
+						Learn More
+						<i class="material-icons md-18">open_in_new</i>
+					</a>
+				</li>
+				<li class="inine-list">git/Github -
+					<a class="straight-link" href="https://realpython.com/python-git-github-intro/">
+						Learn More
+						<i class="material-icons md-18">open_in_new</i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="micro-step">
+		<strong>1.0.1</strong>
+		<p>Set up your working directory</p>
+		<code>$ mkdir playlist-webscraper && cd playlist-webscraper</code>
+	</div>
+
+	<div class="micro-step">
+		<strong>1.0.2</strong>
+		<p>Initialize a new git repo within your working directory</p>
+		<code>$ git init</code>
+	</div>
+
+	<div class="micro-step">
+		<strong>1.0.3</strong>
+		<p>Set up a virtual environment to use for the application</p>
+		<code>$ pyvenv-3.5 env<br/>$ source env/bin/activate</code>
+	</div>
+
+	<p>You should now see you (env) to the left of the prompt in the terminal, indicating that you are now
+		working in a virtual environment</p>
+
+	<div class="card util-margin-vert-60">
+		<div class="card__title">
+			<i class="material-icons md-36">image</i>
+			<div class="card__title--main">Figure 1.0</div>
+		</div>
+		<div class="card__image">
+			<img src="https://source.unsplash.com/800x400/daily" alt="python video">
+		</div>
+	</div>
+
+	<ul class="collapsible util-margin-vert-60">
+		<li>
+			<div class="collapsible-header">
+				<i class="material-icons md-24">keyboard_arrow_down</i>
+				<div class="collapsible-title">virtualenv Commands</div>
+			</div>
+			<div class="collapsible-body">
+				<div class="micro-step">
+					<p>Turn venv off</p>
+					<code>$ deactivate</code>
+				</div>
+				<div class="micro-step">
+					<p>Turn venv on</p>
+					<code>$ source venv/bin/activate</code>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+	<div class="micro-step">
+		<strong>1.0.4</strong>
+		<p>Set up the basic structure for the app. Add the following files to your
+			playlist-webscraper folder</p>
+		<code>$ touch app.py .gitignore README.md requirements.txt</code>
+	</div>
+
+	<p>This will give you the following structure</p>
+	<code>
+		├── .gitignore<br/>
+		├── app.py<br/>
+		├── README.md<br/>
+		└── requirements.txt
+	</code>
+
+	<div class="micro-step">
+		<strong>1.0.5</strong>
+		<p>Next install </p>
+		<code>$ pip3 install beautifulsoup4</code>
+	</div>
+
+	<div class="micro-step">
+		<strong>1.0.6</strong>
+		<p>Add the installed libraries to our requirements.txt file</p>
+		<code>$ pip freeze > requirements.txt</code>
+	</div>
+
+	<p class="util-margin-top-30">With our project folder set up with the basics let's start codeing!!!</p>
+
+	<hr />
+
+	<h2 id="codeing-web-scraper">2.0.0 Codeing the Web Scraper</h2>
+
+	<p>This step will will write code that pulls in an HTML file and parses through it, pulling the content we want.</p>
+
+	<div class="micro-step">
+		<strong>2.0.1</strong>
+		<p>Go to Shazam.com and log in</p>
+	</div>
+
+	<div class="card util-margin-vert-60">
+		<div class="card__title">
+			<i class="material-icons md-36">image</i>
+			<div class="card__title--main">Figure 2.0</div>
+		</div>
+		<div class="card__image">
+			<img src="https://source.unsplash.com/800x400/daily" alt="python video">
+		</div>
+	</div>
+
+	<div class="micro-step">
+		<strong>2.0.2</strong>
+		<p>Open up the inspecter tool</p>
+		<code>
+			Command + Option + I
+		</code>
+	</div>
+
+	<div class="micro-step">
+		<strong>2.0.3</strong>
+		<p>Select the ul tag with all the list items. Note: you'll have to scroll down to get all the item to generate</p>
+	</div>
+
+	<div class="card util-margin-vert-60">
+		<div class="card__title">
+			<i class="material-icons md-36">image</i>
+			<div class="card__title--main">Figure 3.0</div>
+		</div>
+		<div class="card__image">
+			<img src="https://source.unsplash.com/800x400/daily" alt="python video">
+		</div>
+	</div>
+
+	<div class="micro-step">
+		<strong>2.0.4</strong>
+		<p>Copy and paste it to a file. In this example we save it as `shazam.html`</p>
+	</div>
+
+	<div class="card util-margin-vert-60">
+		<div class="card__title">
+			<i class="material-icons md-36">image</i>
+			<div class="card__title--main">Figure 4.0</div>
+		</div>
+		<div class="card__image">
+			<img src="https://source.unsplash.com/800x400/daily" alt="python video">
+		</div>
+	</div>
+
+	<div class="micro-step">
+		<strong>2.0.5</strong>
+		<p>Push changes to master</p>
+		<code>
+			$ git status<br />
+			$ git add .<br />
+			$ git commit -m "YOUR COMMENT HERE"<br />
+			$ git push origin master
+		</code>
+	</div>
+
+	<div class="micro-step">
+		<strong>2.1.0</strong>
+		<p>Run the app to test if it works. You should see simular results to figure 5.0</p>
+		<code>
+			$ python app.py
+		</code>
+	</div>
+
+	<div class="card util-margin-vert-60">
+		<div class="card__title">
+			<i class="material-icons md-36">image</i>
+			<div class="card__title--main">Figure 5.0</div>
+		</div>
+		<div class="card__image">
+			<img src="https://source.unsplash.com/800x400/daily" alt="python video">
+		</div>
+	</div>
+
+	<hr>
+
+	<h2 id="intro-to-beautifulsoup">3.0.0 Intro to BeautifulSoup4 Methods</h2>
+
+	<p>Beautiful Soup is a Python library for pulling data out of HTML and XML files. It works with your favorite parser to provide idiomatic ways of navigating, searching, and modifying the parse tree.</p>
+
+	<p>Beautiful Soup defines a lot of methods for searching the parse tree, but they're all very similar. I'm going to spend a lot of time explaining the two most popular methods: find() and find_all(). The other methods take almost exactly the same arguments, so I’ll just cover them briefly.</p>
+
+	<p>The find_all() method looks through a tag's descendants and retrieves all descendants that match your filters. I gave several examples in Kinds of filters, but here are a few more:</p>
+
+	<p>Some attributes, like the data-* attributes in HTML 5, have names that can’t be used as the names of keyword arguments:</p>
+
+	<code>
+		data_soup = BeautifulSoup('&lt;div data-foo="value"&gt;foo!&lt;/div&gt;')<br/>
+		data_soup.find_all(data-foo="value")<br/>
+		>> SyntaxError: keyword can't be an expression
+	</code>
+
+	<p>You can use these attributes in searches by putting them into a dictionary and passing the dictionary into find_all() as the attrs argument:</p>
+
+	<code>
+		data_soup.find_all(attrs={"data-foo": "value"})<br/>
+		>> [&lt;div data-foo="value"&gt;foo!&lt;/div&gt;]
+	</code>
+
+	<div class="micro-step">
+		<strong>3.0.1</strong>
+		<p>Open up app.py in your favorite editor and add the following code</p>
+		<code>
+			artist_list = []<br/>
+			title_list = []<br/><br/>
+
+			track_list = zip(title_list, artist_list)<br/>
+			track_dict = {}<br/><br/>
+
+			with open('./shazam.html', 'r') as shazamFile:<br/>
+			&#8195;shazamSoup = BeautifulSoup(shazamFile, 'html.parser')<br/><br/>
+	
+			&#8195;# get `details` div<br/>
+			&#8195;&#8195;details = shazamSoup.find_all('div', attrs={'class':'details'})<br/><br/>
+
+			&#8195;for i in details:<br/>
+			&#8195;# loop through `details` div and get `artist` div<br/>
+			&#8195;artist = i.find('div', attrs={'class':'artist'})<br/><br/>
+	
+			&#8195;# loop through `artist` div and get a.text<br/>
+			&#8195;try:<br/>
+			&#8195;&#8195;artist_list.append(" ".join(artist.a.text.split()))<br/>
+			&#8195;except AttributeError:<br/>
+			&#8195;&#8195;artist_list.append(" ")<br/><br/>
+	
+	
+			&#8195;# loop through `details` div and get `title` div<br/>
+			&#8195;title = i.find('div', attrs={'class':'title'})<br/><br/>
+	
+			&#8195;# loop through `title` div and get a.text<br/>
+			&#8195;try:<br/>
+			&#8195;&#8195;title_list.append(" ".join(title.a.text.split()))<br/>
+			&#8195;except AttributeError:<br/>
+			&#8195;&#8195;title_list.append(" ")
+
+			track_dict.update(list(track_list))
+		</code>
+	</div>
+
+	<p>Output of `details = shazamSoup.find_all('div', attrs={'class':'details'})`</p>
+
+	<code>
+		&lt;div class="details details grid grid-vertical grid-space-between"&gt;<br/>
+		&#8195;&lt;div class="title" data-track-title=""&gt;<br/>
+		&#8195;&#8195;&lt;meta content="No Necesitas A Carlo" itemprop="name"/&gt;<br/>
+		&#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=track-click,label=details" href="https://www.shazam.com/track/47131805/no-necesitas-a-carlo"&gt;No Necesitas A Carlo&lt;/a&gt;<br/>
+		&#8195;&lt;/div&gt;<br/><br/>
+
+		&#8195;&lt;div class="artist" data-track-artist="40173391" itemprop="byArtist" itemscope="" itemtype="http://schema.org/MusicGroup"&gt;<br/>
+		&#8195;&#8195;&lt;meta content="banda-pequeños-musical" itemprop="name"/&gt;<br/>
+		&#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=artist-click,label=from-track" href="https://www.shazam.com/artist/40173391/banda-pequeños-musical" itemprop="url"&gt;Banda Pequeños Musical&lt;/a&gt;<br/>
+		&#8195;&lt;/div&gt;<br/>
+		&lt;/div&gt;
+	</code>
+
+	<p>We want to tagetd the `div` with the class of `title` and `artist`. We do that by calling `CLASS_NAME = i.find('div', attrs={'class':'CLASS_NAME'})`</p>
+
+	<p>The output for the artist is:</p>
+
+	<code>
+		&#8195;&lt;div class="artist" data-track-artist="40173391" itemprop="byArtist" itemscope="" itemtype="http://schema.org/MusicGroup"&gt;<br/>
+		&#8195;&#8195;&lt;meta content="banda-pequeños-musical" itemprop="name"/&gt;<br/>
+		&#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=artist-click,label=from-track" href="https://www.shazam.com/artist/40173391/banda-pequeños-musical" itemprop="url"&gt;Banda Pequeños Musical&lt;/a&gt;<br/>
+		&#8195;&lt;/div&gt;
+	</code>
+
+	<p>The output for the title is:</p>
+
+	<code>
+		&#8195;&lt;div class="title" data-track-title=""&gt;<br/>
+		&#8195;&#8195;&lt;meta content="No Necesitas A Carlo" itemprop="name"/&gt;<br/>
+		&#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=track-click,label=details" href="https://www.shazam.com/track/47131805/no-necesitas-a-carlo"&gt;No Necesitas A Carlo&lt;/a&gt;<br/>
+		&#8195;&lt;/div&gt;
+	</code>
+
+	<p>Then we want to target the `&lt;a&gt;` of each object. We do that with the following code.</p>
+
+	<code>
+		artist.a.text
+	</code>
+
+	<p>Since we have the `&lt;a&gt;` isolated we can look for the text at the same time. The final output being:</p>
+
+	<code>
+		Banda Pequeños Musical
+	</code>
+
+	<p>But you'll see that some of the title has spaces in between them. This is white spaces genereated by being rendered in HTML. To fix this we split all the words in the string and rejoin them with a singular space. Once we have the string how we want it, we append it to the empty array.</p>
+
+	<p>Another issue we run into is that not all `<div>` are filled with data. We have the added issue of the program stopping with an AttributeError. To fix this we will implament a try and except block to handle the issue.</p>
+
+	<p>Now we have two arrays, we need a way to pair the title with the artist. Visually we align the two arrays and pair them together. It looks like a zipper running down the arrays.</p>
+
+	<div class="card util-margin-vert-60">
+		<div class="card__title">
+			<i class="material-icons md-36">image</i>
+			<div class="card__title--main">Figure 6.0</div>
+		</div>
+		<div class="card__image">
+			<img style="max-width: 350px; margin:0 auto;" src="{{ url_for('static', filename='images/zip.png')}}" alt="python video">
+		</div>
+	</div>
+
+	<p>Now that we have the basic code. We can quickly export it as JSON in the next step</p>
+
+	<hr />
+
+	<h2 id="exporting-data-to-json">4.0.0 Exporting Data to JSON</h2>
+
+	<div class="micro-step">
+		<strong>4.0.1</strong>
+		<p>Update your app.py code at the end of the file. The output should look like Figure 6.0</p>
+		<code>
+		with open('./track-list.json', 'w') as trackFile:<br/>
+		&#8195;trackFile.write(json.dumps(track_dict))
+		</code>
+	</div>
+
+	<div class="card util-margin-vert-60">
+		<div class="card__title">
+			<i class="material-icons md-36">image</i>
+			<div class="card__title--main">Figure 7.0</div>
+		</div>
+		<div class="card__image">
+			<img src="https://source.unsplash.com/800x400/daily" alt="python video">
+		</div>
+	</div>
+
+	<hr />
+
+	<h2 id="conclusion">Conclusion</h2>
+	<p>With the setup out of the way, we're going to start to build out the word counting functionality of this app. In the next step we're going to set up our YouTube account to recive incoming data. We're also going to add the posting functionality.</p>
+
+	<section class="callout-section">
+		<div class="callout callout__content callout_get_code">
+			<i class="material-icons">
+				code
+			</i>
+			<p>Need the code? Grab it from the repo.</p>
+		</div>
+
+		<div class="callout callout__content callout_get_code">
+			<i class="material-icons">
+				video_library
+			</i>
+			<p>Watch the tutorial video on YouTube</p>
+		</div>
+	</section>
 
 </section>
 </hr>

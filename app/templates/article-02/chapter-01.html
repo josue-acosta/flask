@@ -3,118 +3,117 @@
 {% block navigation %}
 {{super()}}
 <section>
-    <nav class="navigation util-margin-top-30">
-        <ul class="navigation__menu-list">
-            <li>
-                <a href="{{ url_for( navigation.welcome_link ) }}">
-                    <div class="navigation--title">welcome</div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ url_for( chapters[0].chapter_link ) }}">
-                    <div class="navigation--title">get started</div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ url_for( navigation.resource_link ) }}">
-                    <div class="navigation--title">resources</div>
-                </a>
-            </li>
-        </ul>
-    </nav>
+	<nav class="navigation util-margin-top-30">
+		<ul class="navigation__menu-list">
+			<li>
+				<a href="{{ url_for( navigation.welcome_link ) }}">
+					<div class="navigation--title">welcome</div>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for( chapters[0].chapter_link ) }}">
+					<div class="navigation--title">get started</div>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for( navigation.resource_link ) }}">
+					<div class="navigation--title">resources</div>
+				</a>
+			</li>
+		</ul>
+	</nav>
 </section>
 {% endblock %}
 
 {% block page %}
 <section class="page-header">
-    <h1>Step {{ chapters[0].number }}</h1>
-    <div class="overline">{{ title }}</div>
+	<h1>Step {{ chapters[0].number }}</h1>
+	<div class="overline">{{ title }}</div>
 
-    <p class="objective-paragraph">Welcome! The <strong>objective</strong> of this step is to set up project folder and write the code that crawls through your Shazam libray.</p>
+	<p class="objective-paragraph">Welcome! The <strong>objective</strong> of this step is to set up project folder and write the code that crawls through your Shazam libray.</p>
 </section>
 
 <section class="table-of-contents">
-    <h2 class="table-of-contents__title">Table of Contents</h2>
-    <ul>
-        {% for header in step_one.article_headers %}
-        <li>
-            <a href="{{ url_for( chapters[0].chapter_link )}}#{{ header.link }}">{{ header.header }}</a>
-        </li>
-        {% endfor %}
-    </ul>
+	<h2 class="table-of-contents__title">Table of Contents</h2>
+	<ul>
+		{% for header in step_one.article_headers %}
+		<li>
+			<a href="{{ url_for( chapters[0].chapter_link )}}#{{ header.link }}">{{ header.header }}</a>
+		</li>
+		{% endfor %}
+	</ul>
 </section>
 
 <section class="callout-section util-padding-vert-50">
-    <div class="callout callout__content callout_get_code">
-        <i class="material-icons">
-            code
-        </i>
-        <p>Need the code? Grab it from the repo.</p>
-    </div>
+	<div class="callout callout__content callout_get_code">
+		<i class="material-icons">
+			code
+		</i>
+		<p>Need the code? Grab it from the repo.</p>
+	</div>
 
-    <div class="callout callout__content callout_get_code">
-        <i class="material-icons">
-            video_library
-        </i>
-        <p>Watch the tutorial video on YouTube</p>
-    </div>
+	<div class="callout callout__content callout_get_code">
+		<i class="material-icons">
+			video_library
+		</i>
+		<p>Watch the tutorial video on YouTube</p>
+	</div>
 </section>
 
 <section class="tutorial-body">
 
-    <hr>
+	<hr>
 
-    <h2 id="{{ step_one.article_headers[0].link }}">1.0.0 {{ step_one.article_headers[0].header }}</h2>
-    <p>Let's begin with the project's folder architecture</p>
+	<h2 id="{{ step_one.article_headers[0].link }}">1.0.0 {{ step_one.article_headers[0].header }}</h2>
 
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">flag</i>
-            <div class="card__title--main">In This Article</div>
-        </div>
+	<div class="card util-margin-vert-60">
+		<div class="card__title">
+			<i class="material-icons md-36">flag</i>
+			<div class="card__title--main">In This Article</div>
+		</div>
 
-        <div class="card__content">
-            <p>Even though we'll go through them, you should have some familiarity with the following tools</p>
+		<div class="card__content">
+			<p>Even though we'll go through them, you should have some familiarity with the following tools</p>
 
-            <ul>
-                <li class="inine-list">JSON Module -
-                    <a class="straight-link" href="https://docs.python.org/3/library/json.html">
-                        Learn More
-                        <i class="material-icons md-18">open_in_new</i>
-                    </a>
-                </li>
-                <li class="inine-list">Unpacking Functions -
-                    <a class="straight-link" href="https://book.pythontips.com/en/latest/args_and_kwargs.html">
-                        Learn More
-                        <i class="material-icons md-18">open_in_new</i>
-                    </a>
-                </li>
-                <li class="inine-list">app.get_resource() -
-                    <a class="straight-link" href="https://flask.palletsprojects.com/en/1.1.x/api/#flask.Flask.open_resource">
-                        Learn More
-                        <i class="material-icons md-18">open_in_new</i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
+			<ul>
+				<li class="inine-list">JSON Module -
+					<a class="straight-link" href="https://docs.python.org/3/library/json.html">
+						Learn More
+						<i class="material-icons md-18">open_in_new</i>
+					</a>
+				</li>
+				<li class="inine-list">Unpacking Functions -
+					<a class="straight-link" href="https://book.pythontips.com/en/latest/args_and_kwargs.html">
+						Learn More
+						<i class="material-icons md-18">open_in_new</i>
+					</a>
+				</li>
+				<li class="inine-list">app.get_resource() -
+					<a class="straight-link" href="https://flask.palletsprojects.com/en/1.1.x/api/#flask.Flask.open_resource">
+						Learn More
+						<i class="material-icons md-18">open_in_new</i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 
-    <div class="micro-step">
-        <strong>1.0.1</strong>
-        <p>Set up your working directory</p>
-        <code>$ mkdir json-project && cd json-project</code>
-    </div>
+	<div class="micro-step">
+		<strong>1.0.1</strong>
+		<p>Set up your working directory</p>
+		<code>$ mkdir json-project && cd json-project</code>
+	</div>
 
-    <div class="micro-step">
-        <strong>1.0.2</strong>
-        <p>Create a new file</p>
-        <code>$ touch app.py </code>
-    </div>
+	<div class="micro-step">
+		<strong>1.0.2</strong>
+		<p>Create a new file</p>
+		<code>$ touch app.py </code>
+	</div>
 
-    <div class="micro-step">
-        <strong>1.0.3</strong>
-        <p>Add whatever JSON data you want to work with. In this case we'll use the following code. Save it as `data.json`.</p>
-        <code>
+	<div class="micro-step">
+		<strong>1.0.3</strong>
+		<p>Add whatever JSON data you want to work with. In this case we'll use the following code. Save it as `data.json`.</p>
+		<code>
             {<br/>
             &#8195;"title": "Working with JSON",<br/>
             &#8195;"category_type": "one-shot",<br/>
@@ -128,249 +127,317 @@
             &#8195;]<br/>
             }<br/>
         </code>
-    </div>
+	</div>
 
-    <p>Having both files in the same directory will give you the following structure</p>
-    <code>
+	<p>Having both files in the same directory will give you the following structure</p>
+	<code>
         json-project<br />
         ├── app.py<br/>
         ├── data.json<br/>
     </code>
 
 
-    <p class="util-margin-top-30">With our project folder set up with the basics let's start codeing!!!</p>
+	<p class="util-margin-top-30">With our project folder set up with the basics let's start codeing!!!</p>
 
-    <hr />
+	<hr />
 
-    <h2 id="{{ step_one.article_headers[1].link }}">2.0.0 {{ step_one.article_headers[1].header }}</h2>
+	<h2 id="{{ step_one.article_headers[1].link }}">2.0.0 {{ step_one.article_headers[1].header }}</h2>
 
-    <p>In this step we will imoprt the JOSN module and select the resource we want to import.</p>
+	<p>In this step we will imoprt the JOSN module and select the resource we want to import.</p>
 
-    <div class="micro-step">
-        <strong>2.0.1</strong>
-        <p>Import the JSON module by adding this to the top of your file</p>
-        <code>import json</code>
-    </div>
+	<div class="micro-step">
+		<strong>2.0.1</strong>
+		<p>Import the JSON module by adding this to the top of your file</p>
+		<code>import json</code>
+	</div>
 
-    <p>We're going to use one of Flask's function called `open_resource()`. </p>
+	<p>We're going to use one of Flask's function called `open_resource()`. </p>
 
-    <div class="micro-step">
-        <strong>2.0.2</strong>
-        <p>Open up the inspecter tool</p>
-        <code>
+	<div class="micro-step">
+		<strong>2.0.2</strong>
+		<p>Open up the inspecter tool</p>
+		<code>
         with app.open_resource("./data.json", "r" ) as data_file:<br/>
         &#8195;data = json.load(data_file)
         </code>
-    </div>
+	</div>
 
-    <!-- 
-        how does app.open_resource work
-        how do I use app.open_resource
-        what's the file path of app.open_resource
-    -->
+	<ul class="collapsible util-margin-vert-60">
+		<li>
+			<div class="collapsible-header">
+				<i class="material-icons md-24">keyboard_arrow_down</i>
+				<div class="collapsible-title">open_resource()</div>
+			</div>
 
-    <div class="micro-step">
-        <strong>2.0.3</strong>
-        <p>To pass the information to the template and the page add this to the router</p>
-        <code>
+			<div class="collapsible-body">
+				<p>With 'app.open_resource', paths are always relative to the app's root (resource) folder. They may only be opened for reading, since it would be bad to be able to write to application files in production. With 'open', relative paths are relative to the current directory. Files may be opened in any mode.</p>
+
+				<code>
+                    with app.open_resource("RESOURCE", "MODE") as data_file:
+                </code>
+
+				<p>RESOURCE – the name of the resource. To access resources within subfolders use forward slashes as separator.</p>
+				<p>MODE – resource file opening mode</p>
+				<table>
+					<tr>
+						<th>mode</th>
+						<th>description</th>
+					</tr>
+					<tr>
+						<td>r</td>
+						<td>Opens the file in read-only mode. Starts reading from the beginning of the file and is the default mode for the open() function.</td>
+					</tr>
+					<tr>
+						<td>rb&nbsp;(&nbsp;default&nbsp;)</td>
+						<td>Opens the file as read-only in binary format and starts reading from the beginning of the file. While binary format can be used for different purposes, it is usually used when dealing with things like images, videos, etc.</td>
+					</tr>
+					<tr>
+						<td>r+</td>
+						<td>Opens a file for reading and writing, placing the pointer at the beginning of the file.</td>
+					</tr>
+					<tr>
+						<td>w</td>
+						<td>Opens in write-only mode. The pointer is placed at the beginning of the file and this will overwrite any existing file with the same name. It will create a new file if one with the same name doesn't exist.</td>
+					</tr>
+					<tr>
+						<td>wb</td>
+						<td>Opens a write-only file in binary mode.</td>
+					</tr>
+					<tr>
+						<td>w+</td>
+						<td>Opens a file for writing and reading.</td>
+					</tr>
+					<tr>
+						<td>wb+</td>
+						<td>Opens a file for writing and reading in binary mode.</td>
+					</tr>
+					<tr>
+						<td>a</td>
+						<td>Opens a file for appending new information to it. The pointer is placed at the end of the file. A new file is created if one with the same name doesn't exist.</td>
+					</tr>
+					<tr>
+						<td>ab</td>
+						<td>Opens a file for appending in binary mode.</td>
+					</tr>
+					<tr>
+						<td>a+</td>
+						<td>Opens a file for both appending and reading.</td>
+					</tr>
+					<tr>
+						<td>ab+</td>
+						<td>Opens a file for both appending and reading in binary mode.</td>
+					</tr>
+				</table>
+			</div>
+		</li>
+	</ul>
+
+	<div class="micro-step">
+		<strong>2.0.3</strong>
+		<p>To pass the information to the template and the page add this to the router</p>
+		<code>
             @app.route('/article-02/welcome')<br/>
             def article_02_welcome():<br/>
-            &#8195;return render_template("article-02/welcome.html", **data)
+            
         </code>
-    </div>
+	</div>
 
-    <div class="micro-step">
-        <strong>2.1.0</strong>
-        <p>Run the app to test if it works. You should see simular results to figure 5.0</p>
-        <code>
+	<div class="micro-step">
+		<strong>2.1.0</strong>
+		<p>Run the app to test if it works. You should see simular results to figure 5.0</p>
+		<code>
             $ python app.py
         </code>
-    </div>
+	</div>
 
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">image</i>
-            <div class="card__title--main">Figure 5.0</div>
-        </div>
-        <div class="card__image">
-            <img src="https://source.unsplash.com/800x400/daily" alt="python video">
-        </div>
-    </div>
+	<div class="card util-margin-vert-60">
+		<div class="card__title">
+			<i class="material-icons md-36">image</i>
+			<div class="card__title--main">Figure 5.0</div>
+		</div>
+		<div class="card__image">
+			<img src="https://source.unsplash.com/800x400/daily" alt="python video">
+		</div>
+	</div>
 
-    <hr>
+	<hr>
 
-    <h2 id="intro-to-beautifulsoup">3.0.0 Intro to BeautifulSoup4 Methods</h2>
+	<h2 id="intro-to-beautifulsoup">3.0.0 JSON Methods</h2>
 
-    <p>Beautiful Soup is a Python library for pulling data out of HTML and XML files. It works with your favorite parser to provide idiomatic ways of navigating, searching, and modifying the parse tree.</p>
+	<p>Python's JSON module handles all the details of translating between a string with JSON data annd Pythons' values for the `json.loads()` and `json.dumps()` function. JSON can't store every kind of Python's value. It can contain values of only the following data types: stings, integers, floats, Booleans, lists, dictionaries, and NONEType. JSON cannot represent Python-specific objects, such as File objects, CSV Reader or Writer objects, Regex objects, or Selentium WebElements objects.</p>
 
-    <p>Beautiful Soup defines a lot of methods for searching the parse tree, but they're all very similar. I'm going to spend a lot of time explaining the two most popular methods: find() and find_all(). The other methods take almost exactly the same arguments, so I’ll just cover them briefly.</p>
+	<!-- Why is it a string of JSON data? -->
 
-    <p>The find_all() method looks through a tag's descendants and retrieves all descendants that match your filters. I gave several examples in Kinds of filters, but here are a few more:</p>
+	<p>What this means is that the module has to translate between JSON data structure and Python. See illustration ## for the chart. We use the module as a converstion table as well as to manipulate the data.</p>
 
-    <p>Some attributes, like the data-* attributes in HTML 5, have names that can’t be used as the names of keyword arguments:</p>
+	<h3>Reading JSON with the `loads()` function</h3>
+	<p>To translate a string containing JSON data into a Python value, pass it to the `json.loads()` function. The name stands for 'load string' not the word 'loads'.</p>
 
-    <code>
-        data_soup = BeautifulSoup('&lt;div data-foo="value"&gt;foo!&lt;/div&gt;')<br/>
-        data_soup.find_all(data-foo="value")<br/>
-        >> SyntaxError: keyword can't be an expression
+	<p>Note that JSON strings always use double qoutes. It will return that data as a Python dictionary. Python dictionaries are not ordered, so the key-value pairs may appear in a different order when you `print()` them out.</p>
+
+	<code>
+        with app.open_resource("templates/article-02/data.json", "r" ) as data_file:<br />
+        &#8195;data = json.load(data_file)
     </code>
 
-    <p>You can use these attributes in searches by putting them into a dictionary and passing the dictionary into find_all() as the attrs argument:</p>
+	<h3>Writing JSON with the `dumps()` function</h3>
 
-    <code>
-        data_soup.find_all(attrs={"data-foo": "value"})<br/>
-        >> [&lt;div data-foo="value"&gt;foo!&lt;/div&gt;]
+	<p>To translate a Python value into a string of JSON-formatted data, pass it to the `json.dumps()` function. The name stands for 'dump string' and not the word 'dumps'.</p>
+
+	<!-- I don't use it in this feature but it looks like this -->
+	<code>
+        python_data = { 'name': 'Solomon  Grundy', 'born_on_monday': True, 'amount_of_kids': None }<br />
+        json_data = json.dumps(python_data)<br />
+        print(json_data)<br />
+        >>> { "name": "Solomon  Grundy", "born_on_monday": true, "amount_of_kids": null }
     </code>
 
-    <div class="micro-step">
-        <strong>3.0.1</strong>
-        <p>Open up app.py in your favorite editor and add the following code</p>
-        <code>
-            artist_list = []<br/>
-            title_list = []<br/><br/>
+	<p>Notice how the values changes. Here is the converstion table also know as Encoding and Decoding.</p>
+	<!-- Use JSON to loop through all the items -->
+	<table>
+		<tr>
+			<th>Python</th>
+			<th>JSON</th>
+		</tr>
+		<tr>
+			<td>Single ( ' ' )</td>
+			<td>Double ( " " )</td>
+		</tr>
+		<tr>
+			<td>Dictionary</td>
+			<td>Object</td>
+		</tr>
+		<tr>
+			<td>List</td>
+			<td>Array</td>
+		</tr>
+		<tr>
+			<td>String</td>
+			<td>String</td>
+		</tr>
+	</table>
 
-            track_list = zip(title_list, artist_list)<br/>
-            track_dict = {}<br/><br/>
+	<hr />
 
-            with open('./shazam.html', 'r') as shazamFile:<br/>
-            &#8195;shazamSoup = BeautifulSoup(shazamFile, 'html.parser')<br/><br/>
-    
-            &#8195;# get `details` div<br/>
-            &#8195;&#8195;details = shazamSoup.find_all('div', attrs={'class':'details'})<br/><br/>
+	<h2 id="unpacking-dictionaries">4.0.0 Unpacking Dictionaries</h2>
 
-            &#8195;for i in details:<br/>
-            &#8195;# loop through `details` div and get `artist` div<br/>
-            &#8195;artist = i.find('div', attrs={'class':'artist'})<br/><br/>
-    
-            &#8195;# loop through `artist` div and get a.text<br/>
-            &#8195;try:<br/>
-            &#8195;&#8195;artist_list.append(" ".join(artist.a.text.split()))<br/>
-            &#8195;except AttributeError:<br/>
-            &#8195;&#8195;artist_list.append(" ")<br/><br/>
-    
-    
-            &#8195;# loop through `details` div and get `title` div<br/>
-            &#8195;title = i.find('div', attrs={'class':'title'})<br/><br/>
-    
-            &#8195;# loop through `title` div and get a.text<br/>
-            &#8195;try:<br/>
-            &#8195;&#8195;title_list.append(" ".join(title.a.text.split()))<br/>
-            &#8195;except AttributeError:<br/>
-            &#8195;&#8195;title_list.append(" ")
+	<p>Now we have a data to pass through the render_template() function. It can take multiple parameters.</p>
 
-            track_dict.update(list(track_list))
-        </code>
-    </div>
+	<p>The first iteration to pass the information might look like the following</p>
 
-    <p>Output of `details = shazamSoup.find_all('div', attrs={'class':'details'})`</p>
+	<code>
+<pre>
+@app.route('/article-02/chapter-01')
+def article_02_chapter_01():
+	with app.open_resource("templates/article-02/data.json", "r" ) as data_file:
+			data = json.load(data_file)
 
-    <code>
-        &lt;div class="details details grid grid-vertical grid-space-between"&gt;<br/>
-        &#8195;&lt;div class="title" data-track-title=""&gt;<br/>
-        &#8195;&#8195;&lt;meta content="No Necesitas A Carlo" itemprop="name"/&gt;<br/>
-        &#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=track-click,label=details" href="https://www.shazam.com/track/47131805/no-necesitas-a-carlo"&gt;No Necesitas A Carlo&lt;/a&gt;<br/>
-        &#8195;&lt;/div&gt;<br/><br/>
+	return render_template(
+		"article-02/chapter-01.html",
+		title=data["title"],
+		title=category_type["category_type"],
+		title=objective_paragraph["objective_paragraph"],
+		title=chapter_number["chapters"].number,)
+		title=chapter_teaser["chapters"].teaser)
+</pre>
+	</code>
 
-        &#8195;&lt;div class="artist" data-track-artist="40173391" itemprop="byArtist" itemscope="" itemtype="http://schema.org/MusicGroup"&gt;<br/>
-        &#8195;&#8195;&lt;meta content="banda-pequeños-musical" itemprop="name"/&gt;<br/>
-        &#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=artist-click,label=from-track" href="https://www.shazam.com/artist/40173391/banda-pequeños-musical" itemprop="url"&gt;Banda Pequeños Musical&lt;/a&gt;<br/>
-        &#8195;&lt;/div&gt;<br/>
-        &lt;/div&gt;
-    </code>
+	<p>If the key is a valid python variable name the you can also use the dot . notation. Then &lbrace;&lbrace; data.name &rbrace;&rbrace; and &lbrace;&lbrace; data.bjective_paragraph &rbrace;&rbrace; will work, but for the rest you have to use the bracket syntax: &lbrace;&lbrace;data['objective-paragraph']&rbrace;&rbrace; and &lbrace;&lbrace;data['objective paragraph']&rbrace;&rbrace;.</p>
 
-    <p>We want to tagetd the `div` with the class of `title` and `artist`. We do that by calling `CLASS_NAME = i.find('div', attrs={'class':'CLASS_NAME'})`</p>
+	<p>But there's a much simplier way. Let me introduce key word argument oporator ( **kwargs ).</p>
 
-    <p>The output for the artist is:</p>
+	<p>In most situations if you want to pass an argument into a function you'll have to pass it through as a list.</p>
 
-    <code>
-        &#8195;&lt;div class="artist" data-track-artist="40173391" itemprop="byArtist" itemscope="" itemtype="http://schema.org/MusicGroup"&gt;<br/>
-        &#8195;&#8195;&lt;meta content="banda-pequeños-musical" itemprop="name"/&gt;<br/>
-        &#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=artist-click,label=from-track" href="https://www.shazam.com/artist/40173391/banda-pequeños-musical" itemprop="url"&gt;Banda Pequeños Musical&lt;/a&gt;<br/>
-        &#8195;&lt;/div&gt;
-    </code>
+	<code>
+<pre>
+def my_sum(my_integers):
+result = 0
+for x in my_integers:
+	result += x
+return result
 
-    <p>The output for the title is:</p>
+list_of_integers = [1, 2, 3]
+print(my_sum(list_of_integers))
+</pre>
+</code>
 
-    <code>
-        &#8195;&lt;div class="title" data-track-title=""&gt;<br/>
-        &#8195;&#8195;&lt;meta content="No Necesitas A Carlo" itemprop="name"/&gt;<br/>
-        &#8195;&#8195;&lt;a class="ellip" data-shz-beacon="type=nav,providerdesc=track-click,label=details" href="https://www.shazam.com/track/47131805/no-necesitas-a-carlo"&gt;No Necesitas A Carlo&lt;/a&gt;<br/>
-        &#8195;&lt;/div&gt;
-    </code>
+	<p>Again, you're passing a list. What about passing multiple individual arguments?</p>
 
-    <p>Then we want to target the `&lt;a&gt;` of each object. We do that with the following code.</p>
+	<code>
+<pre>
+def my_sum(*args):
+result = 0
+# Iterating over the Python args tuple
+for x in args:
+	result += x
+return result
 
-    <code>
-        artist.a.text
-    </code>
+print(my_sum(1, 2, 3))
+</pre>
+</code>
 
-    <p>Since we have the `&lt;a&gt;` isolated we can look for the text at the same time. The final output being:</p>
+	<p>In this example, you’re no longer passing a list to my_sum(). Instead, you’re passing three different positional arguments. my_sum() takes all the parameters that are provided in the input and packs them all into a single iterable object named args.</p>
 
-    <code>
-        Banda Pequeños Musical
-    </code>
+	<p>Note that args is just a name. You’re not required to use the name args. You can choose any name that you prefer, such as `integers` for example.</p>
 
-    <p>But you'll see that some of the title has spaces in between them. This is white spaces genereated by being rendered in HTML. To fix this we split all the words in the string and rejoin them with a singular space. Once we have the string how we want it, we append it to the empty array.</p>
+	<p>Let's go back to out code. Update it to the following</p>
 
-    <p>Another issue we run into is that not all `<div>` are filled with data. We have the added issue of the program stopping with an AttributeError. To fix this we will implament a try and except block to handle the issue.</p>
+	<code>
+<pre>
+@app.route('/article-02/chapter-01')
+def article_02_chapter_01():
+with app.open_resource("templates/article-02/data.json", "r" ) as data_file:
+		data = json.load(data_file)
 
-    <p>Now we have two arrays, we need a way to pair the title with the artist. Visually we align the two arrays and pair them together. It looks like a zipper running down the arrays.</p>
+return render_template("article-02/chapter-01.html", **date)
+</pre>
+</code>
 
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">image</i>
-            <div class="card__title--main">Figure 6.0</div>
-        </div>
-        <div class="card__image">
-            <img style="max-width: 350px; margin:0 auto;" src="{{ url_for('static', filename='images/zip.png')}}" alt="python video">
-        </div>
-    </div>
+	<p>The reason we're using two (2) astericks (*) is because we're passing key-value pairs.</p>
 
-    <p>Now that we have the basic code. We can quickly export it as JSON in the next step</p>
+	<hr />
 
-    <hr />
+	<h2 id="exporting-data-to-json">5.0.0 Exporting Data to JSON</h2>
 
-    <h2 id="exporting-data-to-json">4.0.0 Exporting Data to JSON</h2>
-
-    <div class="micro-step">
-        <strong>4.0.1</strong>
-        <p>Update your app.py code at the end of the file. The output should look like Figure 6.0</p>
-        <code>
+	<div class="micro-step">
+		<strong>4.0.1</strong>
+		<p>Update your app.py code at the end of the file. The output should look like Figure 6.0</p>
+		<code>
         with open('./track-list.json', 'w') as trackFile:<br/>
         &#8195;trackFile.write(json.dumps(track_dict))
         </code>
-    </div>
+	</div>
 
-    <div class="card util-margin-vert-60">
-        <div class="card__title">
-            <i class="material-icons md-36">image</i>
-            <div class="card__title--main">Figure 7.0</div>
-        </div>
-        <div class="card__image">
-            <img src="https://source.unsplash.com/800x400/daily" alt="python video">
-        </div>
-    </div>
+	<div class="card util-margin-vert-60">
+		<div class="card__title">
+			<i class="material-icons md-36">image</i>
+			<div class="card__title--main">Figure 7.0</div>
+		</div>
+		<div class="card__image">
+			<img src="https://source.unsplash.com/800x400/daily" alt="python video">
+		</div>
+	</div>
 
-    <hr />
+	<hr />
 
-    <h2 id="conclusion">Conclusion</h2>
-    <p>With the setup out of the way, we're going to start to build out the word counting functionality of this app. In the next step we're going to set up our YouTube account to recive incoming data. We're also going to add the posting functionality.</p>
+	<h2 id="conclusion">Conclusion</h2>
+	<p>With the setup out of the way, we're going to start to build out the word counting functionality of this app. In the next step we're going to set up our YouTube account to recive incoming data. We're also going to add the posting functionality.</p>
 
-    <section class="callout-section">
-        <div class="callout callout__content callout_get_code">
-            <i class="material-icons">
-                code
-            </i>
-            <p>Need the code? Grab it from the repo.</p>
-        </div>
+	<section class="callout-section">
+		<div class="callout callout__content callout_get_code">
+			<i class="material-icons">
+				code
+			</i>
+			<p>Need the code? Grab it from the repo.</p>
+		</div>
 
-        <div class="callout callout__content callout_get_code">
-            <i class="material-icons">
-                video_library
-            </i>
-            <p>Watch the tutorial video on YouTube</p>
-        </div>
-    </section>
+		<div class="callout callout__content callout_get_code">
+			<i class="material-icons">
+				video_library
+			</i>
+			<p>Watch the tutorial video on YouTube</p>
+		</div>
+	</section>
 
 </section>
 </hr>

@@ -30,7 +30,41 @@
 	<h1>Step {{ chapters[0].number }}</h1>
 	<div class="overline">{{ title }}</div>
 
-	<p class="objective-paragraph">Welcome! The <strong>objective</strong> of this step is to set up project folder and write the code that crawls through your Shazam libray.</p>
+	<p class="objective-paragraph">Welcome! The <strong>objective</strong> of this tutorial you will learn to import JSON as data, unpackage the data, and populate the view template with such data.</p>
+</section>
+
+<section>
+	<div class="card util-margin-bottom-60">
+		<div class="card__title">
+			<i class="material-icons md-36">flag</i>
+			<div class="card__title--main">In This Article</div>
+		</div>
+
+		<div class="card__content">
+			<p>Even though we'll go through the following topics, you may not find what you need. If that's the case, please review the sources's documentation below for more information.</p>
+
+			<ul>
+				<li class="inine-list">JSON Module -
+					<a class="straight-link" href="https://docs.python.org/3/library/json.html">
+						Learn More
+						<i class="material-icons md-18">open_in_new</i>
+					</a>
+				</li>
+				<li class="inine-list">*args and **kwargs -
+					<a class="straight-link" href="https://book.pythontips.com/en/latest/args_and_kwargs.html">
+						Learn More
+						<i class="material-icons md-18">open_in_new</i>
+					</a>
+				</li>
+				<li class="inine-list">app.get_resource() -
+					<a class="straight-link" href="https://flask.palletsprojects.com/en/1.1.x/api/#flask.Flask.open_resource">
+						Learn More
+						<i class="material-icons md-18">open_in_new</i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 </section>
 
 <section class="table-of-contents">
@@ -66,38 +100,6 @@
 
 	<h2 id="{{ step_one.article_headers[0].link }}">1.0.0 {{ step_one.article_headers[0].header }}</h2>
 
-	<div class="card util-margin-vert-60">
-		<div class="card__title">
-			<i class="material-icons md-36">flag</i>
-			<div class="card__title--main">In This Article</div>
-		</div>
-
-		<div class="card__content">
-			<p>Even though we'll go through them, you should have some familiarity with the following tools</p>
-
-			<ul>
-				<li class="inine-list">JSON Module -
-					<a class="straight-link" href="https://docs.python.org/3/library/json.html">
-						Learn More
-						<i class="material-icons md-18">open_in_new</i>
-					</a>
-				</li>
-				<li class="inine-list">Unpacking Functions -
-					<a class="straight-link" href="https://book.pythontips.com/en/latest/args_and_kwargs.html">
-						Learn More
-						<i class="material-icons md-18">open_in_new</i>
-					</a>
-				</li>
-				<li class="inine-list">app.get_resource() -
-					<a class="straight-link" href="https://flask.palletsprojects.com/en/1.1.x/api/#flask.Flask.open_resource">
-						Learn More
-						<i class="material-icons md-18">open_in_new</i>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-
 	<div class="micro-step">
 		<strong>1.0.1</strong>
 		<p>Set up your working directory</p>
@@ -107,12 +109,12 @@
 	<div class="micro-step">
 		<strong>1.0.2</strong>
 		<p>Create a new file</p>
-		<code>$ touch app.py </code>
+		<code>$ touch app.py data.json</code>
 	</div>
 
 	<div class="micro-step">
 		<strong>1.0.3</strong>
-		<p>Add whatever JSON data you want to work with. In this case we'll use the following code. Save it as `data.json`.</p>
+		<p>In this tutorial we are going to import JSON from a file on out root directory. Save it as <var>data.json</var>.</p>
 		<code>
             {<br/>
             &#8195;"title": "Working with JSON",<br/>
@@ -132,12 +134,13 @@
 	<p>Having both files in the same directory will give you the following structure</p>
 	<code>
         json-project<br />
-        ├── app.py<br/>
-        ├── data.json<br/>
+		&boxvr; app.py<br/>
+		&boxvr; data.json<br/>
+		&boxvr; index.html
     </code>
 
 
-	<p class="util-margin-top-30">With our project folder set up with the basics let's start codeing!!!</p>
+	<p class="util-margin-top-30">This complete our project folder.</p>
 
 	<hr />
 
@@ -166,17 +169,40 @@
 		<li>
 			<div class="collapsible-header">
 				<i class="material-icons md-24">keyboard_arrow_down</i>
-				<div class="collapsible-title">open_resource()</div>
+				<div class="collapsible-title">More about open_resource()</div>
 			</div>
 
 			<div class="collapsible-body">
-				<p>With 'app.open_resource', paths are always relative to the app's root (resource) folder. They may only be opened for reading, since it would be bad to be able to write to application files in production. With 'open', relative paths are relative to the current directory. Files may be opened in any mode.</p>
+				<p>With <var>app.open_resource()</var>, paths are always relative to the app's root (resource) folder. They may only be opened for reading, since it would be bad to be able to write to application files in production. With <var>open()</var>, relative paths are relative to the current directory. Files may be opened in any mode.</p>
 
 				<code>
                     with app.open_resource("RESOURCE", "MODE") as data_file:
                 </code>
 
-				<p>RESOURCE – the name of the resource. To access resources within subfolders use forward slashes as separator.</p>
+				<p>RESOURCE – the name of the resource. To access resources within subfolders use forward slashes as separator</p>
+
+				<p>If the file is in the same directory</p>
+				<code>
+					json-project<br />
+					&boxvr; app.py<br/>
+					&boxvr; app.py<br/>
+					&boxur; data.json<br/>
+
+					with app.open_resource("data.json") as data_file:
+				</code>
+
+				<p>If the file is in a nested directory</p>
+				<code>
+<pre>
+json-project
+&boxvr; app.py
+&boxur; templates
+	&boxur; data.json
+</pre>
+
+with app.open_resource("templates/data.json") as data_file:
+				</code>
+
 				<p>MODE – resource file opening mode</p>
 				<table>
 					<tr>
@@ -234,11 +260,26 @@
 
 	<div class="micro-step">
 		<strong>2.0.3</strong>
-		<p>To pass the information to the template and the page add this to the router</p>
+		<p>Create a router for the page</p>
 		<code>
-            @app.route('/article-02/welcome')<br/>
-            def article_02_welcome():<br/>
-            
+<pre>
+from flask import Flask
+
+# app config
+app = Flask(__name__)
+
+# import json
+with app.open_resource("./data.json", "r" ) as data_file:<br/>
+	data = json.load(data_file)
+
+# URL - GET localhost:5000/
+@app.route('/')
+def index():
+	return render_template("index.html")
+
+if __name__ == '__main__':
+	app.run()
+</pre>
         </code>
 	</div>
 
@@ -260,29 +301,31 @@
 		</div>
 	</div>
 
+	<p>Congratualtions! You now succefully imported json. In the next step we will see what the JSON module can do and how we can use it.</p>
+
 	<hr>
 
 	<h2 id="intro-to-beautifulsoup">3.0.0 JSON Methods</h2>
 
-	<p>Python's JSON module handles all the details of translating between a string with JSON data annd Pythons' values for the `json.loads()` and `json.dumps()` function. JSON can't store every kind of Python's value. It can contain values of only the following data types: stings, integers, floats, Booleans, lists, dictionaries, and NONEType. JSON cannot represent Python-specific objects, such as File objects, CSV Reader or Writer objects, Regex objects, or Selentium WebElements objects.</p>
+	<p>Python's JSON module handles all the details of translating between a string with JSON data annd Pythons' values for the <var>json.loads()</var> and <var>json.dumps()</var> function. JSON can't store every kind of Python's value. It can contain values of only the following data types: stings, integers, floats, Booleans, lists, dictionaries, and NONEType. JSON cannot represent Python-specific objects, such as File objects, CSV Reader or Writer objects, Regex objects, or Selentium WebElements objects.</p>
 
 	<!-- Why is it a string of JSON data? -->
 
 	<p>What this means is that the module has to translate between JSON data structure and Python. See illustration ## for the chart. We use the module as a converstion table as well as to manipulate the data.</p>
 
-	<h3>Reading JSON with the `loads()` function</h3>
-	<p>To translate a string containing JSON data into a Python value, pass it to the `json.loads()` function. The name stands for 'load string' not the word 'loads'.</p>
+	<h3>Reading JSON with the <var>loads()</var> function</h3>
+	<p>To translate a string containing JSON data into a Python value, pass it to the <var>json.loads()</var> function. The name stands for 'load string' not the word 'loads'.</p>
 
-	<p>Note that JSON strings always use double qoutes. It will return that data as a Python dictionary. Python dictionaries are not ordered, so the key-value pairs may appear in a different order when you `print()` them out.</p>
+	<p>Note that JSON strings always use double qoutes. It will return that data as a Python dictionary. Python dictionaries are not ordered, so the key-value pairs may appear in a different order when you <var>print()</var> them out.</p>
 
 	<code>
-        with app.open_resource("templates/article-02/data.json", "r" ) as data_file:<br />
+        with app.open_resource("data.json", "r" ) as data_file:<br />
         &#8195;data = json.load(data_file)
     </code>
 
-	<h3>Writing JSON with the `dumps()` function</h3>
+	<h3>Writing JSON with the <var>dumps()</var> function</h3>
 
-	<p>To translate a Python value into a string of JSON-formatted data, pass it to the `json.dumps()` function. The name stands for 'dump string' and not the word 'dumps'.</p>
+	<p>To translate a Python value into a string of JSON-formatted data, pass it to the <var>json.dumps()</var> function. The name stands for 'dump string' and not the word 'dumps'.</p>
 
 	<!-- I don't use it in this feature but it looks like this -->
 	<code>
@@ -321,19 +364,19 @@
 
 	<h2 id="unpacking-dictionaries">4.0.0 Unpacking Dictionaries</h2>
 
-	<p>Now we have a data to pass through the render_template() function. It can take multiple parameters.</p>
+	<p>Now we have a data to pass through the <var>render_template()</var> function. It can take multiple parameters.</p>
 
 	<p>The first iteration to pass the information might look like the following</p>
 
 	<code>
 <pre>
-@app.route('/article-02/chapter-01')
-def article_02_chapter_01():
-	with app.open_resource("templates/article-02/data.json", "r" ) as data_file:
+@app.route('/')
+def index():
+	with app.open_resource("data.json", "r" ) as data_file:
 			data = json.load(data_file)
 
 	return render_template(
-		"article-02/chapter-01.html",
+		"index.html",
 		title=data["title"],
 		title=category_type["category_type"],
 		title=objective_paragraph["objective_paragraph"],
@@ -342,7 +385,7 @@ def article_02_chapter_01():
 </pre>
 	</code>
 
-	<p>If the key is a valid python variable name the you can also use the dot . notation. Then &lbrace;&lbrace; data.name &rbrace;&rbrace; and &lbrace;&lbrace; data.bjective_paragraph &rbrace;&rbrace; will work, but for the rest you have to use the bracket syntax: &lbrace;&lbrace;data['objective-paragraph']&rbrace;&rbrace; and &lbrace;&lbrace;data['objective paragraph']&rbrace;&rbrace;.</p>
+	<p>If the key is a valid python variable name the you can also use the dot <var>.</var> notation. Then &lbrace;&lbrace; data.name &rbrace;&rbrace; and &lbrace;&lbrace; data.objective_paragraph &rbrace;&rbrace; will work, but for the rest you have to use the bracket syntax: &lbrace;&lbrace;data['objective-paragraph']&rbrace;&rbrace; and &lbrace;&lbrace;data['objective paragraph']&rbrace;&rbrace;.</p>
 
 	<p>But there's a much simplier way. Let me introduce key word argument oporator ( **kwargs ).</p>
 
@@ -376,9 +419,9 @@ print(my_sum(1, 2, 3))
 </pre>
 </code>
 
-	<p>In this example, you’re no longer passing a list to my_sum(). Instead, you’re passing three different positional arguments. my_sum() takes all the parameters that are provided in the input and packs them all into a single iterable object named args.</p>
+	<p>In this example, you’re no longer passing a list to <var>my_sum()</var>. Instead, you’re passing three different positional arguments. <var>my_sum()</var> takes all the parameters that are provided in the input and packs them all into a single iterable object named args.</p>
 
-	<p>Note that args is just a name. You’re not required to use the name args. You can choose any name that you prefer, such as `integers` for example.</p>
+	<p>Note that args is just a name. You’re not required to use the name args. You can choose any name that you prefer, such as <var>integers</var> for example.</p>
 
 	<p>Let's go back to out code. Update it to the following</p>
 
@@ -397,31 +440,8 @@ return render_template("article-02/chapter-01.html", **date)
 
 	<hr />
 
-	<h2 id="exporting-data-to-json">5.0.0 Exporting Data to JSON</h2>
-
-	<div class="micro-step">
-		<strong>4.0.1</strong>
-		<p>Update your app.py code at the end of the file. The output should look like Figure 6.0</p>
-		<code>
-        with open('./track-list.json', 'w') as trackFile:<br/>
-        &#8195;trackFile.write(json.dumps(track_dict))
-        </code>
-	</div>
-
-	<div class="card util-margin-vert-60">
-		<div class="card__title">
-			<i class="material-icons md-36">image</i>
-			<div class="card__title--main">Figure 7.0</div>
-		</div>
-		<div class="card__image">
-			<img src="https://source.unsplash.com/800x400/daily" alt="python video">
-		</div>
-	</div>
-
-	<hr />
-
 	<h2 id="conclusion">Conclusion</h2>
-	<p>With the setup out of the way, we're going to start to build out the word counting functionality of this app. In the next step we're going to set up our YouTube account to recive incoming data. We're also going to add the posting functionality.</p>
+	<p>There's three ( 3 ) simple steps to importing JSON into your template. Import it, unpack it, call it. But that's not all the uses for it. In other articles I write about how we can save form data as JSON, how we can make desitions based on key-value pairs in the back-end as well and the front-end, and how we can graph JSON on the browser. It's popularity is because it flexability and it's implamentations are only based one's imagination.</p>
 
 	<section class="callout-section">
 		<div class="callout callout__content callout_get_code">

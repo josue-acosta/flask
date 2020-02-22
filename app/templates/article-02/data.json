@@ -1,11 +1,11 @@
 {
 	"title": "Working with JSON",
 	"category_type": "one-shot",
-	"objective_paragraph": "to use JavaScript Object Notation ( JSON ) to populate rubric elements of articles.",
+	"objective_paragraph": "to use JavaScript Object Notation ( JSON ) to populate Jinja2 templates.",
 	"chapters": [
 		{
 			"number": "One",
-			"teaser": "Set up the project archetechture and functions to accept JSON as data and populate the view template with such data.",
+			"teaser": "Learn to import JSON as data, unpackage the data, and populate the view template with such data.",
 			"chapter_link": "article_02_chapter_01"
 		}
 	],

@@ -26,7 +26,59 @@
 {% endblock %}
 
 {% block page %}
+<h1 class="h2">Other writing modes</h1>
+<table>
+	<tr>
+		<th>mode</th>
+		<th>description</th>
+	</tr>
+	<tr>
+		<td>r</td>
+		<td>Opens the file in read-only mode. Starts reading from the beginning of the file and is the default mode for the open() function.</td>
+	</tr>
+	<tr>
+		<td>rb&nbsp;(&nbsp;default&nbsp;)</td>
+		<td>Opens the file as read-only in binary format and starts reading from the beginning of the file. While binary format can be used for different purposes, it is usually used when dealing with things like images, videos, etc.</td>
+	</tr>
+	<tr>
+		<td>r+</td>
+		<td>Opens a file for reading and writing, placing the pointer at the beginning of the file.</td>
+	</tr>
+	<tr>
+		<td>w</td>
+		<td>Opens in write-only mode. The pointer is placed at the beginning of the file and this will overwrite any existing file with the same name. It will create a new file if one with the same name doesn't exist.</td>
+	</tr>
+	<tr>
+		<td>wb</td>
+		<td>Opens a write-only file in binary mode.</td>
+	</tr>
+	<tr>
+		<td>w+</td>
+		<td>Opens a file for writing and reading.</td>
+	</tr>
+	<tr>
+		<td>wb+</td>
+		<td>Opens a file for writing and reading in binary mode.</td>
+	</tr>
+	<tr>
+		<td>a</td>
+		<td>Opens a file for appending new information to it. The pointer is placed at the end of the file. A new file is created if one with the same name doesn't exist.</td>
+	</tr>
+	<tr>
+		<td>ab</td>
+		<td>Opens a file for appending in binary mode.</td>
+	</tr>
+	<tr>
+		<td>a+</td>
+		<td>Opens a file for both appending and reading.</td>
+	</tr>
+	<tr>
+		<td>ab+</td>
+		<td>Opens a file for both appending and reading in binary mode.</td>
+	</tr>
+</table>
 
+<h1 class="h2">Random Form</h1>
 <form action="{{ url_for('article_02_resource') }}" method="POST" class="util-margin-bottom-30">
 
 	<label for="first_name">First name:</label>
@@ -40,7 +92,7 @@
 	<button type="submit">Submit</button>
 </form>
 
-<h1>URL Links</h1>
+<h1 class="h2">Links used to create this article</h1>
 <ul>
 	<li>https://stackoverflow.com/questions/55195928/ python-flask-importing-a-json-file-from-a-specific-folder-and-returning-on-g</li>
 	<li>https://stackoverflow.com/questions/21133976/flask-load-local-json</li>
@@ -54,17 +106,6 @@
 	<li>https://www.digitalocean.com/community/tutorials/how-to-use-args-and-kwargs-in-python-3</li>
 	<li>https://stackoverflow.com/questions/36901/what-does-double-star-asterisk-and-star-asterisk-do-for-parameters</li>
 	<li>https://stackoverflow.com/questions/39719689/what-is-the-difference-between-json-load-and-json-loads-functions</li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
 </ul>
 
 {% endblock %}

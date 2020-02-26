@@ -136,11 +136,11 @@
         json-project<br />
 		&boxvr; app.py<br/>
 		&boxvr; data.json<br/>
-		&boxvr; index.html
+		&boxur; index.html
     </code>
 
 
-	<p class="util-margin-top-30">This complete our project folder.</p>
+	<p class="util-margin-top-30">This completes our project folder.</p>
 
 	<hr />
 
@@ -165,34 +165,33 @@
         </code>
 	</div>
 
-	<ul class="collapsible util-margin-vert-60">
-		<li>
-			<div class="collapsible-header">
-				<i class="material-icons md-24">keyboard_arrow_down</i>
-				<div class="collapsible-title">More about open_resource()</div>
-			</div>
+	<h3>Flask's app.open_resource() method</h3>
 
-			<div class="collapsible-body">
-				<p>With <var>app.open_resource()</var>, paths are always relative to the app's root (resource) folder. They may only be opened for reading, since it would be bad to be able to write to application files in production. With <var>open()</var>, relative paths are relative to the current directory. Files may be opened in any mode.</p>
+	<p>With <var>app.open_resource()</var>, paths are always relative to the app's root (resource) folder. They may only be opened for reading, since it would be bad to be able to write to application files in production. With <var>open()</var>, relative paths are relative to the current directory. Files may be opened in any mode.</p>
 
-				<code>
-                    with app.open_resource("RESOURCE", "MODE") as data_file:
-                </code>
+	<h4>Syntax</h4>
+	<code>
+		with app.open_resource("RESOURCE", "MODE") as data_file:
+	</code>
 
-				<p>RESOURCE – the name of the resource. To access resources within subfolders use forward slashes as separator</p>
+	<p>RESOURCE – the name of the resource. To access resources within subfolders use forward slashes as separator</p>
 
-				<p>If the file is in the same directory</p>
-				<code>
-					json-project<br />
-					&boxvr; app.py<br/>
-					&boxvr; app.py<br/>
-					&boxur; data.json<br/>
+	<p>MODE – resource file opening mode</p>
 
-					with app.open_resource("data.json") as data_file:
-				</code>
+	<p>If the file is in the same directory</p>
+	<code>
+<pre>
+json-project
+&boxvr; app.py
+&boxvr; app.py
+&boxur; data.json
 
-				<p>If the file is in a nested directory</p>
-				<code>
+with app.open_resource("data.json") as data_file:
+</pre>
+	</code>
+
+	<p>If the file is in a nested directory</p>
+	<code>
 <pre>
 json-project
 &boxvr; app.py
@@ -201,62 +200,7 @@ json-project
 </pre>
 
 with app.open_resource("templates/data.json") as data_file:
-				</code>
-
-				<p>MODE – resource file opening mode</p>
-				<table>
-					<tr>
-						<th>mode</th>
-						<th>description</th>
-					</tr>
-					<tr>
-						<td>r</td>
-						<td>Opens the file in read-only mode. Starts reading from the beginning of the file and is the default mode for the open() function.</td>
-					</tr>
-					<tr>
-						<td>rb&nbsp;(&nbsp;default&nbsp;)</td>
-						<td>Opens the file as read-only in binary format and starts reading from the beginning of the file. While binary format can be used for different purposes, it is usually used when dealing with things like images, videos, etc.</td>
-					</tr>
-					<tr>
-						<td>r+</td>
-						<td>Opens a file for reading and writing, placing the pointer at the beginning of the file.</td>
-					</tr>
-					<tr>
-						<td>w</td>
-						<td>Opens in write-only mode. The pointer is placed at the beginning of the file and this will overwrite any existing file with the same name. It will create a new file if one with the same name doesn't exist.</td>
-					</tr>
-					<tr>
-						<td>wb</td>
-						<td>Opens a write-only file in binary mode.</td>
-					</tr>
-					<tr>
-						<td>w+</td>
-						<td>Opens a file for writing and reading.</td>
-					</tr>
-					<tr>
-						<td>wb+</td>
-						<td>Opens a file for writing and reading in binary mode.</td>
-					</tr>
-					<tr>
-						<td>a</td>
-						<td>Opens a file for appending new information to it. The pointer is placed at the end of the file. A new file is created if one with the same name doesn't exist.</td>
-					</tr>
-					<tr>
-						<td>ab</td>
-						<td>Opens a file for appending in binary mode.</td>
-					</tr>
-					<tr>
-						<td>a+</td>
-						<td>Opens a file for both appending and reading.</td>
-					</tr>
-					<tr>
-						<td>ab+</td>
-						<td>Opens a file for both appending and reading in binary mode.</td>
-					</tr>
-				</table>
-			</div>
-		</li>
-	</ul>
+</code>
 
 	<div class="micro-step">
 		<strong>2.0.3</strong>

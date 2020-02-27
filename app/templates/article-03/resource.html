@@ -1,0 +1,80 @@
+{% extends "templates/article-template.html" %}
+
+{% block navigation %}
+{{super()}}
+<section>
+	<nav class="navigation util-margin-top-30">
+		<ul class="navigation__menu-list">
+			<li>
+				<a href="{{ url_for( navigation.welcome_link ) }}">
+					<div class="navigation--title">welcome</div>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for( chapters[0].chapter_link ) }}">
+					<div class="navigation--title">get started</div>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for( navigation.resource_link ) }}">
+					<div class="navigation--title">resources</div>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</section>
+{% endblock %}
+
+{% block page %}
+<h1 class="h2">Links used to create this article</h1>
+<ol>
+	<li>
+		<a href="https://scotch.io/bar-talk/processing-incoming-request-data-in-flask" target="_blank">https://scotch.io/bar-talk/processing-incoming-request-data-in-flask</a>
+	</li>
+	<li>
+		<a href="https://www.youtube.com/watch?v=zdgYw-3tzfI&list=WL&index=11&t=3489s" target="_blank">https://www.youtube.com/watch?v=zdgYw-3tzfI&list=WL&index=11&t=3489s</a>
+	</li>
+	<li>
+		<a href="https://stackoverflow.com/questions/10434599/get-the-data-received-in-a-flask-request" target="_blank">https://stackoverflow.com/questions/10434599/get-the-data-received-in-a-flask-request</a>
+	</li>
+	<li>
+		<a href="https://www.programiz.com/python-programming/type-conversion-and-casting" target="_blank">https://www.programiz.com/python-programming/type-conversion-and-casting</a>
+	</li>
+	<li>
+		<a href="http://blog.luisrei.com/articles/flaskrest.html" target="_blank">http://blog.luisrei.com/articles/flaskrest.html</a>
+	</li>
+	<li>
+		<a href="https://web.itu.edu.tr/uyar/fad/forms.html" target="_blank">https://web.itu.edu.tr/uyar/fad/forms.html</a>
+	</li>
+	<li>
+		<a href="https://pythonspot.com/flask-web-forms/" target="_blank">https://pythonspot.com/flask-web-forms/</a>
+	</li>
+	<li>
+		<a href="https://www.twilio.com/blog/a-phone-number-input-field-for-flask-forms" target="_blank">https://www.twilio.com/blog/a-phone-number-input-field-for-flask-forms</a>
+	</li>
+	<li>
+		<a href="" target="_blank"></a>
+	</li>
+	<li>
+		<a href="" target="_blank"></a>
+	</li>
+	<li>
+		<a href="" target="_blank"></a>
+	</li>
+	<li>
+		<a href="" target="_blank"></a>
+	</li>
+	<li>
+		<a href="" target="_blank"></a>
+	</li>
+	<li>
+		<a href="" target="_blank"></a>
+	</li>
+	<li>
+		<a href="" target="_blank"></a>
+	</li>
+	<li>
+		<a href="" target="_blank"></a>
+	</li>
+</ol>
+{% endblock %}

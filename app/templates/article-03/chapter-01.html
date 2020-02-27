@@ -1,0 +1,236 @@
+{% extends "templates/article-template.html" %}
+
+{% block navigation %}
+{{super()}}
+<section>
+	<nav class="navigation util-margin-top-30">
+		<ul class="navigation__menu-list">
+			<li>
+				<a href="{{ url_for( navigation.welcome_link ) }}">
+					<div class="navigation--title">welcome</div>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for( chapters[0].chapter_link ) }}">
+					<div class="navigation--title">get started</div>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for( navigation.resource_link ) }}">
+					<div class="navigation--title">resources</div>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</section>
+{% endblock %}
+
+{% block page %}
+<section class="page-header">
+	<h1>Step {{ chapters[0].number }}</h1>
+	<div class="overline">{{ title }}</div>
+
+	<p class="objective-paragraph">Welcome! The <strong>objective</strong> of this tutorial you will learn to import JSON as data, unpackage the data, and populate the view template with such data.</p>
+</section>
+
+<section>
+	<div class="card util-margin-bottom-60">
+		<div class="card__title">
+			<i class="material-icons md-36">flag</i>
+			<div class="card__title--main">In This Article</div>
+		</div>
+
+		<div class="card__content">
+			<p>Even though we'll go through the following topics, you may not find what you need. If that's the case, please review the sources's documentation below for more information.</p>
+
+			<ul>
+				<li class="inine-list">JSON Module -
+					<a class="straight-link" href="https://docs.python.org/3/library/json.html">
+						Learn More
+						<i class="material-icons md-18">open_in_new</i>
+					</a>
+				</li>
+				<li class="inine-list">*args and **kwargs -
+					<a class="straight-link" href="https://book.pythontips.com/en/latest/args_and_kwargs.html">
+						Learn More
+						<i class="material-icons md-18">open_in_new</i>
+					</a>
+				</li>
+				<li class="inine-list">app.get_resource() -
+					<a class="straight-link" href="https://flask.palletsprojects.com/en/1.1.x/api/#flask.Flask.open_resource">
+						Learn More
+						<i class="material-icons md-18">open_in_new</i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<section class="table-of-contents">
+	<h2 class="table-of-contents__title">Table of Contents</h2>
+	<ul>
+		{% for header in step_one.article_headers %}
+		<li>
+			<a href="{{ url_for( chapters[0].chapter_link )}}#{{ header.link }}">{{ header.header }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+</section>
+
+<section class="callout-section util-padding-vert-50">
+	<div class="callout callout__content callout_get_code">
+		<i class="material-icons">
+			code
+		</i>
+		<p>Need the code? Grab it from the repo.</p>
+	</div>
+
+	<div class="callout callout__content callout_get_code">
+		<i class="material-icons">
+			video_library
+		</i>
+		<p>Watch the tutorial video on YouTube</p>
+	</div>
+</section>
+
+<section class="tutorial-body">
+
+	<hr>
+
+	<h2 id="{{ step_one.article_headers[0].link }}">1.0.0 {{ step_one.article_headers[0].header }}</h2>
+
+	<div class="micro-step">
+		<strong>1.0.1</strong>
+		<p>Set up your working directory</p>
+		<code>$ mkdir json-project && cd json-project</code>
+	</div>
+
+	<div class="micro-step">
+		<strong>1.0.2</strong>
+		<p>Create a new file</p>
+		<code>$ touch app.py data.json</code>
+	</div>
+
+	<div class="micro-step">
+		<strong>1.0.3</strong>
+		<p>In this tutorial we are going to import JSON from a file on out root directory. Save it as <var>data.json</var>.</p>
+		<code>
+            {<br/>
+            &#8195;"title": "Working with JSON",<br/>
+            &#8195;"category_type": "one-shot",<br/>
+            &#8195;"objective_paragraph": "to use JavaScript Object Notation ( JSON ) to populate rubric elements of articles&#8195;",<br/>
+            &#8195;"chapters": [<br/>
+            &#8195;&#8195;{<br/>
+            &#8195;&#8195;&#8195;"number": "One",<br/>
+            &#8195;&#8195;&#8195;"teaser": "Set up the project archetechture and functions to accept JSON as data and populate the view template with such data.",<br/>
+            &#8195;&#8195;&#8195;"chapter_link": "article_02_chapter_01"<br/>
+            &#8195;&#8195;}<br/>
+            &#8195;]<br/>
+            }<br/>
+        </code>
+	</div>
+
+	<p>Having both files in the same directory will give you the following structure</p>
+	<code>
+        json-project<br />
+		&boxvr; app.py<br/>
+		&boxvr; data.json<br/>
+		&boxur; index.html
+    </code>
+
+
+	<p class="util-margin-top-30">This completes our project folder.</p>
+
+	<hr />
+
+	<h2 id="{{ step_one.article_headers[1].link }}">2.0.0 {{ step_one.article_headers[1].header }}</h2>
+
+	<!-- 
+		A11y Forms
+		POST, GET methods
+		HTML Forms
+			input
+				name, id, label, value
+			button
+				submit
+
+		import the request module
+		request methods
+			form = get from POST method
+			arg  = get from GET method
+		
+		import json
+		json methods
+			open("FILENAME", "w") write mode
+			loads(), dumps()
+			There has to be a better way to break down the form than listing all the fields
+
+		Form Schema
+			input:  string, firstName
+			input:  string, lastName
+			input:  number, age
+			select: string, dayOfBirth
+
+		* How to mask fields
+			- phone number
+			- dates
+		
+		* How to show children based on selection
+		
+		* Add multiple multiple children to parent object
+			nested two levels
+	 -->
+
+	<form action="{{ url_for('article_03_chapter_01') }}" method="POST" class="util-margin-bottom-30">
+
+		<label for="first_name">First name:</label>
+		<input type="text" id="first_name" name="first_name">
+
+		<label for="last_name" class="util-margin-top-25">Last name:</label>
+		<input type="text" id="last_name" name="last_name">
+
+		<label for="age" class="util-margin-top-25">Age ( days ):</label>
+		<input type="number" id="age" name="age">
+
+		<label for="day_born" class="util-margin-top-25">What day where you born?</label>
+		<select id="day_born" name="day_born">
+			<option>-- select day --</option>
+			<option value="monday">Monday</option>
+			<option value="tuesday">Tuesday</option>
+			<option value="wednesday">Wednesday</option>
+			<option value="thrusday">Thrusday</option>
+			<option value="friday">Friday</option>
+			<option value="saturday">Saturday</option>
+			<option value="sunday">Sunday</option>
+		</select>
+
+		<div class="util-margin-top-30">
+			<button type="submit">Submit</button>
+		</div>
+	</form>
+
+	<hr />
+
+	<h2 id="conclusion">Conclusion</h2>
+	<p>There's three ( 3 ) simple steps to importing JSON into your template. Import it, unpack it, call it. But that's not all the uses for it. In other articles I write about how we can save form data as JSON, how we can make desitions based on key-value pairs in the back-end as well and the front-end, and how we can graph JSON on the browser. It's popularity is because it flexability and it's implamentations are only based one's imagination.</p>
+
+	<section class="callout-section">
+		<div class="callout callout__content callout_get_code">
+			<i class="material-icons">
+				code
+			</i>
+			<p>Need the code? Grab it from the repo.</p>
+		</div>
+
+		<div class="callout callout__content callout_get_code">
+			<i class="material-icons">
+				video_library
+			</i>
+			<p>Watch the tutorial video on YouTube</p>
+		</div>
+	</section>
+
+</section>
+</hr>
+{% endblock %}

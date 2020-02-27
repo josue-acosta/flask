@@ -1,0 +1,28 @@
+{
+	"title": "Working with Forms",
+	"category_type": "Series",
+	"objective_paragraph": "to create basic form that saves our data into JSON format.",
+	"chapters": [
+		{
+			"number": "One",
+			"teaser": "Learn the foundational elements of creating a form.",
+			"chapter_link": "article_03_chapter_01"
+		}
+	],
+	"navigation": {
+		"welcome_link": "article_03_welcome",
+		"resource_link": "article_03_resource"
+	},
+	"step_one": {
+		"article_headers": [
+			{
+				"header": "Project Setup",
+				"link": "project-setup"
+			},
+			{
+				"header": "Form, Input and Label fields",
+				"link": "form-fields"
+			}
+		]
+	}
+}

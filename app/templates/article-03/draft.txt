@@ -1,0 +1,170 @@
+# A basic HTML form
+
+ACTION, which simply accept sthe URL for the script that will process the data from your form.
+METHOD, aatribute accepts either POST or GET as its value. 
+TARGET
+NAME
+
+POST is by far the most popular, as it allows for greater amount of data to be sent.
+GET is a little easier for developers to deal with, and is best used with single responses, like a single text box.
+
+
+Caution: One at a time
+You need to add the end tag </form> for your first form before creating another one in the same document. Generally, browsers will ignore any new occurances of the <form> tag, since the purpose of the tag being is to tell the browser how to submit data to the server, and different parts of a single form can't be submitted in different ways.
+
+
+In short: you can't nest forms ( https://stackoverflow.com/questions/379610/can-you-nest-html-forms )
+
+
+The form element represents a hyperlink that can be manipulated through a collection of form-associated elements, some of which can represent editable values that can be submitted to a server for processing.
+( https://html.spec.whatwg.org/multipage/forms.html#the-form-element )
+
+
+The NAME attribute is a variable name for the input field.
+
+
+It gets passed on to your processing script on the server.
+Each input field must have a name attribute to be submitted. If the name attribute is omitted, the data of that input field will not be sent at all.
+( https://www.w3schools.com/html/html_forms.asp )
+
+
+The name attribute is probably the most important attribute of the <input> element. It isn't strictly required for validation, but you should never omit it. When a form is submitted to the server, the data from the form is included in an HTTP request. The data is packaged as a series of name-value pairs. The name for each name-value pair is the name attribute of each input, and the value is the user-entered (or pre-specified) value. Without the name attribute, an <input> element cannot provide its value to the server on form submission.
+( https://html.com/attributes/input-name/#ixzz6FIoIwS7y )
+
+
+I think this is what Azra said, that the name attribut should match the DB's key. For example
+<input name="firstName" data-bind="model.firstName" />
+
+
+The form has can have a name attribute. The name attribute specifies the name of a form. The name attribute is used to reference elements in a JavaScript, or to reference form data after a form is submitted.
+( https://www.w3schools.com/tags/att_form_name.asp )
+( https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_form_name )
+
+
+
+# Getting data from users
+How to use: input fields
+( https://html.com/tags/input/ )
+
+How to use: checkboxes
+Nothing special
+
+How to use: radio
+Radio requires that you use the VALUE attribute, and that the NAME attribute be the same for all of the input tags that are intended for the same group. VALUE on the other hand, should be different be different for each choice. 
+
+With radio its important to assign a default value because it's possible that the user will simply skip over the entry altogether. 
+
+How to use: submit button
+The input tag also has a type that automatically submits the data that's been entered into the HTML form. The Submit type accepts only the attribute VALUE which can be used to rename the button. Otherwise, the only purpose of the SUBMIT buttons is to send off all the other form information.
+
+<input type="submit"> defines a button for submitting the form data to a form-handler.
+The form-handler is typically a page on the server with a script for processing input data.
+The form-handler is specified in the form's action attribute.
+
+What's the difference between input submit and button submits?
+IDK, just mess around with to see what happens
+( https://www.w3schools.com/tags/att_button_type.asp )
+( https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button )
+
+How to use: select
+
+So I think I picked up on a lot of things I didn't realize. Like the name is a variable for the server to store the value. The button is a a better choice than an input field because its easier to style.
+
+I think the next step is to learn how to use the label. Also, more about forms and a11y.
+
+Form A11y
+
+Provide labels to identify all form controls, including text fields, checkboxes, radio buttons, and drop-down menus. In most cases, this is done by using the <label> element.
+
+Associating labels explicitly
+Whenever possible, use the label element to associate text with form elements explicitly. The `for` attribute of the label must exactly match the `id` of the form control.
+
+<label for="firstname">First name:</label>
+<input type="text" name="firstname" id="firstname"><br>
+
+<input type="checkbox" name="subscribe" id="subscribe">
+<label for="subscribe">Subscribe to newsletter</label>
+
+Label / Input relationship
+input name => for server
+label for == input id
+
+1. create an input tag
+	<input />
+
+2. specify what kind of input field it is
+	<input type="text" />
+
+3. specify the name of the variable the server will use to store the input's value
+	<input type="text" name="firstName" />
+
+4. give the input field a unique identifier
+	<input type="text" name="firstName" id="first-name"/>
+
+5. create a label tag
+	<label></label>
+
+6. identify the input field's role by the lables innerHTML value
+	<label>First name:</label>
+
+7. assosiate the label with to the input with the for attribute
+	<label for="first-name" >First name:</label>
+
+8. success
+	<label for="first-name" >First name:</label>
+	<input type="text" name="firstName" id="first-name"/>
+
+To hide the label ues aria-label
+The aria-label attribute can also be used to identify form controls. This approach is well supported by screen readers and other assistive technology, but, unlike the title attribute (see below), the information is not conveyed to visual users. The approach should therefore only be used when the label of the control is clear from the surrounding content, like the button in the example below.
+
+<input type="text" name="search" aria-label="Search">
+<button type="submit">Search</button>
+
+( https://www.w3.org/WAI/tutorials/forms/labels/ )
+
+
+# form instructions
+( https://www.w3.org/WAI/tutorials/forms/instructions/ )
+
+# general information
+It's always possible to use a form control outside of a <form> element. If you do so, by default that control has nothing to do with any form unless you associate it with a form using the form attribute. This was introduced to let you explicitly bind a control with a form even if it is not nested inside it.
+
+
+( https://developer.mozilla.org/en-US/docs/Learn/Forms/How_to_structure_a_web_form )
+
+
+The project:
+Build the same forms as the daycare. I need to build it so redeem myself. To start out with I'll create this.
+
+parent:
+{
+	"first_name": string,
+	"last_name": srting,
+	"children": [
+		{
+			"first_name": string,
+			"last_name": string,
+			"birthday": string,
+			"group_number": integer,
+		}
+	],
+	"address": {
+		"address_line_1": string,
+		"address_line_2": string,
+		"city": string,
+		"state": string,
+		"zip_code": integer,
+	},
+	"phone_number": string
+}
+
+Remeber, for integers you'll have to class cast them from strings to ints ( "age" : int(request.form.get("age")), )
+
+I'll leave this part until the database section of my course
+child
+	- first name
+	- last name
+	- birthday
+	- custodian
+		- mother, father, step-parent, guardian ( grandparent, parent's domestic partner)
+	- allergies

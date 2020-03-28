@@ -1,0 +1,87 @@
+{% extends "templates/article-template.html" %}
+
+{% block navigation %}
+{{super()}}
+<section>
+	<nav class="navigation util-margin-top-30">
+		<ul class="navigation__menu-list">
+			<li>
+				<a href="{{ url_for( navigation.welcome_link ) }}">
+					<div class="navigation--title">welcome</div>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for( chapters[0].chapter_link ) }}">
+					<div class="navigation--title">get started</div>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for( navigation.resource_link ) }}">
+					<div class="navigation--title">resources</div>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</section>
+{% endblock %}
+
+{% block page %}
+<section class="tutorial-body">
+
+	<form action="{{ url_for('article_03_chapter_01') }}" method="POST" class="util-margin-bottom-30">
+
+		<fieldset>
+			<legend>Parent information:</legend>
+			<label for="first_name">First name:</label>
+			<input type="text" id="first_name" name="first_name">
+
+			<label for="last_name" class="util-margin-top-25">Last name:</label>
+			<input type="text" id="last_name" name="last_name">
+
+			<label for="phone_number" class="util-margin-top-25">Phone number:</label>
+			<input type="tel" id="phone_number" name="phone_number">
+		</fieldset>
+
+		<fieldset class="util-margin-top-40">
+			<legend>Child information:</legend>
+			<label for="first_name">First name:</label>
+			<input type="text" id="first_name" name="first_name">
+
+			<label for="last_name" class="util-margin-top-25">Last name:</label>
+			<input type="text" id="last_name" name="last_name">
+
+			<label for="birthday" class="util-margin-top-25">Birthday:</label>
+			<input type="number" id="birthday" name="birthday">
+		</fieldset>
+
+		<input type="file" id="upload-file" name="file" />
+
+		<div class="util-margin-top-30">
+			<button type="submit">Submit</button>
+		</div>
+	</form>
+
+	<hr />
+
+	<h2 id="conclusion">Conclusion</h2>
+	<p>There's three ( 3 ) simple steps to importing JSON into your template. Import it, unpack it, call it. But that's not all the uses for it. In other articles I write about how we can save form data as JSON, how we can make desitions based on key-value pairs in the back-end as well and the front-end, and how we can graph JSON on the browser. It's popularity is because it flexability and it's implamentations are only based one's imagination.</p>
+
+	<section class="callout-section">
+		<div class="callout callout__content callout_get_code">
+			<i class="material-icons">
+				code
+			</i>
+			<p>Need the code? Grab it from the repo.</p>
+		</div>
+
+		<div class="callout callout__content callout_get_code">
+			<i class="material-icons">
+				video_library
+			</i>
+			<p>Watch the tutorial video on YouTube</p>
+		</div>
+	</section>
+
+</section>
+</hr>
+{% endblock %}

@@ -6,6 +6,8 @@ import json
 with app.open_resource("templates/article-03/data.json", "r" ) as data_file:
 		data = json.load(data_file)
 
+def find_group_number(birthday):
+	return birthday + 100
 
 @app.route('/article-03/welcome')
 def article_03_welcome():
@@ -15,16 +17,21 @@ def article_03_welcome():
 @app.route('/article-03/chapter-01', methods=["GET", "POST"])
 def article_03_chapter_01():
 	if request.method == "POST":
-		age_json = json.dumps(request.form.get("age"))
 
-		print(type(request.form.get("age")))
-		print(age_json)
+		group_number = find_group_number(int(request.form.get("birthday")))
 
 		form_data = {
-			"first_name" : request.form.get("first_name"),
-			"last_name" : request.form.get("last_name"),
-			"age" : int(request.form.get("age")),
-			"day_born" : request.form.get("day_born")
+			"first_name": request.form.get("first_name"),
+			"last_name": request.form.get("last_name"),
+			"phone_number": request.form.get("phone_number"),
+			"children": [
+				{
+					"first_name": request.form.get("first_name"),
+					"last_name": request.form.get("last_name"),
+					"birthday": int(request.form.get("birthday")),
+					"group_number": group_number
+				}
+			]
 		}
 
 		with open("./app/templates/article-03/form_data.json", "w") as form_data_file:
@@ -32,7 +39,7 @@ def article_03_chapter_01():
 
 		return redirect(request.url)
 	
-	return render_template("article-03/chapter-01.html", **data)
+	return render_template("article-03/working-form.html", **data)
 
 
 @app.route('/article-03/resource')

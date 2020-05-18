@@ -6,8 +6,10 @@ app.config.from_object("configuration.DevelopmentConfig")
 
 # import routers
 from app import routes_website
-from app import routes_article_02
 
 # register blueprints
 from app.article_01.views import article_01_blueprint
+from app.article_02.views import article_02_blueprint
+
 app.register_blueprint(article_01_blueprint, url_prefix='/article-01')
+app.register_blueprint(article_02_blueprint, url_prefix='/article-02')

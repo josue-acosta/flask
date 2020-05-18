@@ -6,12 +6,12 @@
 		{
 			"number": "One",
 			"teaser": "Learn to import JSON as data, unpackage the data, and populate the view template with such data.",
-			"chapter_link": "article_02_chapter_01"
+			"chapter_link": "article_02.chapter_01"
 		}
 	],
 	"navigation": {
-		"welcome_link": "article_02_welcome",
-		"resource_link": "article_02_resource"
+		"welcome_link": "article_02.welcome",
+		"resource_link": "article_02.resource"
 	},
 	"step_one": {
 		"article_headers": [

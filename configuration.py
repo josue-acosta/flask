@@ -8,6 +8,8 @@ class BaseConfig(object):
 		"db": "test",
 		"host": "mongodb+srv://admin:adminPassword001@curriculum-edcoy.mongodb.net/test?ssl=true&ssl_cert_reqs=CERT_NONE&retryWrites=true&w=majority"
 	}
+	UPLOAD_FILES = "/Users/josueacosta/Documents/education/divisions/web-development/python/flask-base/app/static/uploads"
+	ALLOWED_IMAGE_EXTENSIONS = ["JPEG", "JPG", "PNG", "GIF", "CSV", "JSON"]
 
 class ProductionConfig(BaseConfig):
 	'''Production config class'''

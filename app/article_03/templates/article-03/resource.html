@@ -1,0 +1,30 @@
+{% extends "templates/article-template.html" %}
+
+{% block navigation %}
+{{super()}}
+<section>
+	<nav class="navigation util-margin-top-30">
+		<ul class="navigation__menu-list">
+			<li>
+				<a href="{{ url_for('article_03.welcome') }}">
+					<div class="navigation--title">welcome</div>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('article_03.chapter_01') }}">
+					<div class="navigation--title">get started</div>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('article_03.resource') }}">
+					<div class="navigation--title">resources</div>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</section>
+{% endblock %}
+
+{% block page %}
+<h1>Resource Page</h1>
+{% endblock %}

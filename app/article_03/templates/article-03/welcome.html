@@ -1,0 +1,63 @@
+{% extends "templates/article-template.html" %}
+
+{% block navigation %}
+{{super()}}
+<section>
+	<nav class="navigation util-margin-top-30">
+		<ul class="navigation__menu-list">
+			<li>
+				<a href="{{ url_for('article_03.welcome') }}">
+					<div class="navigation--title">welcome</div>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('article_03.chapter_01') }}">
+					<div class="navigation--title">get started</div>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('article_03.resource') }}">
+					<div class="navigation--title">resources</div>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</section>
+{% endblock %}
+
+{% block page %}
+<section class="page-header">
+	<h1>Uploading files with Flask</h1>
+
+	<div class="overline">Category: one-shot</div>
+
+	<p class="objective-paragraph">Welcome! The <strong>objective</strong> of this tutorial is to learn how to upload CSV files</p>
+</section>
+
+<div class="card card--course util-margin-top-30">
+	<div class="card__title">
+		<div class="card__title--main">Chapter 1</div>
+	</div>
+
+	<div class="card__content">
+		<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non quae obcaecati sed quia a eveniet quidem placeat libero commodi facere consectetur deleniti mollitia alias reprehenderit cum accusamus eaque ducimus.</p>
+	</div>
+
+	<div class="card__button">
+		<a class="button" href="{{ url_for('article_03.chapter_01') }}">go to chapter</a>
+	</div>
+</div>
+
+<div class="card--course__connector">
+	<div></div>
+	<div></div>
+</div>
+
+<div class="card card--course card--course__success">
+	<div class="card__title">
+		<div class="card__title--main h1">Complete</div>
+	</div>
+</div>
+
+<hr />
+{% endblock %}

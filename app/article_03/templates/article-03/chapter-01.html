@@ -1,0 +1,38 @@
+{% extends "templates/article-template.html" %}
+
+{% block navigation %}
+{{super()}}
+<section>
+	<nav class="navigation util-margin-top-30">
+		<ul class="navigation__menu-list">
+			<li>
+				<a href="{{ url_for('article_03.welcome') }}">
+					<div class="navigation--title">welcome</div>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('article_03.chapter_01') }}">
+					<div class="navigation--title">get started</div>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('article_03.resource') }}">
+					<div class="navigation--title">resources</div>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</section>
+{% endblock %}
+
+{% block page %}
+<h1>Chapter 01 Page</h1>
+<h1 class="h2">Upload Form</h1>
+<form action="{{ url_for('article_03.chapter_01') }}" method="POST" enctype="multipart/form-data" class="util-margin-bottom-30">
+
+	<label for="upload-form">Upload file</label>
+	<input type="file" id="upload-form" name="upload-form">
+
+	<button type="submit">Submit</button>
+</form>
+{% endblock %}

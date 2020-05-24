@@ -5,18 +5,18 @@ from flask import Blueprint, render_template, request, redirect
 article_02_blueprint = Blueprint("article_02", __name__, template_folder='templates')
 
 
-with article_02_blueprint.open_resource("./templates/data.json", "r" ) as data_file:
+with article_02_blueprint.open_resource("./templates/article-02/data.json", "r" ) as data_file:
 		data = json.load(data_file)
 
 
 @article_02_blueprint.route('/welcome')
 def welcome():
-	return render_template("welcome.html", **data)
+	return render_template("article-02/welcome.html", **data)
 
 
 @article_02_blueprint.route('/chapter-01')
 def chapter_01():
-	return render_template("chapter-01.html", **data)
+	return render_template("article-02/chapter-01.html", **data)
 
 
 @article_02_blueprint.route('/resource', methods=["GET", "POST"])
@@ -32,4 +32,4 @@ def resource():
 
 		return redirect(request.url)
 
-	return render_template("resource.html", **data)
+	return render_template("article-02/resource.html", **data)
